@@ -1,0 +1,165 @@
+* ============================================================================
+* PARTIAL TRANSCRIPTION of LPE-extracted netlist
+*   Source path : /SIM/DFDS_20211231/Personal/ynie/3-LibCharCerti/2025/
+*                 N2P_v1.0/1-MC_golden/0-FMC_golden/Collaterals/kits/base/
+*                 3svt/Netlist/LPE_cworst_CCworst_T_m40c/
+*                 SDFSRPQSXGMZD4BWP130HPNPN3P48CPD.spi
+*   Original    : 1858 lines, 92398 chars (per vim status bar)
+*   Transcribed : lines 1-100, 1795-1810, 1848-1858 (from 4 screenshots)
+*   Missing     : lines 101-1794 (~1694 lines) and 1811-1847 (37 lines)
+*                 Mostly RC parasitic network + ~30 mid-section MOSFETs.
+*                 DO NOT use this file for simulation - fetch the original.
+* ============================================================================
+
+.subckt SDFSRPQSXGMZD4BWP130HPNPN3P48CPD SI D SE CP CD SDN Q VDD VSS VPP VBB
+CA1 XOUT1_2#d XOUT1_4#g 1.24324e-17
+CA2 XOUT1_1#d XOUT1_3#g 1.24914e-17
+CA3 XOUT1_2#d XOUT1_2#g 1.28177e-17
+CA4 XOUT1_1#d XOUT1_1#g 1.26744e-17
+CA5 XOUT0_2#d XOUT0_4#g 1.4619e-17
+CA6 XOUT0_1#d XOUT0_3#g 1.44786e-17
+CA7 XOUT0_2#d XOUT0_2#g 1.49446e-17
+CA8 XOUT0_1#d XOUT0_1#g 1.40644e-17
+CA9 Q#22 sl_bx#63 3.41158e-18
+CA10 Q#22 sl_bx#33 4.68866e-18
+CA11 Q#29 sl_bx#27 4.03578e-18
+CA12 Q#22 sl_bx#25 4.82503e-18
+CA13 Q#29 sl_bx#19 4.00457e-18
+CA14 Q#22 sl_bx#57 3.68422e-21
+CA15 Q#29 sl_bx#54 2.24053e-18
+CA16 Q#22 sl_bx#52 1.03993e-19
+CA17 Q#22 sl_bx#49 3.25215e-18
+CA18 Q#29 sl_bx#46 2.2232e-18
+CA19 Q#22 sl_bx#44 1.1007e-19
+CA20 Q#22 sl_bx#41 3.48999e-18
+CA21 Q 0 3.22796e-18
+CA22 XOUT1_2#d VBB 9.22634e-19
+CA23 Q#22 VSS 4.76829e-18
+CA24 Q#16 VSS 5.0696e-18
+CA25 Q VSS 2.52576e-17
+CA26 Q#29 VDD 6.20143e-18
+CA27 Q#22 VDD 7.29255e-18
+Rcb_2_A1 Q#29 Q 134.779175
+Rcb_2_A2 Q#22 XOUT1_3#d 631.493958
+Rz_1_A3 XOUT0_4#d Q#16 424.910828
+Ry_1_A4 Q#29 XOUT1_4#d 602.603699
+RsA5 Q#22 Q#16 38.825985
+RebA6 Q#29 Q#16 14.445135
+Rdb_4_A7 XOUT0_1#d XOUT0_3#d 0.002040
+Rdb_5_A8 XOUT0_1#d Q#22 424.910828
+Rfb_1_A9 XOUT1_1#d XOUT1_3#d 0.002040
+RgbA10 Q#22 XOUT1_1#d 631.493958
+Rgb_1_A11 XOUT0_2#d XOUT0_4#d 0.002040
+RpbA12 XOUT0_2#d Q#16 424.910828
+Rpb_1_A13 XOUT0_3#d Q#22 424.910828
+RxbA14 XOUT1_2#d XOUT1_4#d 0.002040
+RacA15 Q#29 XOUT1_2#d 602.603699
+CA28 VDD XMFA4#d 7.52541e-18
+CA29 VDD#143 net0145 1.72534e-18
+CA30 VDD net0145 2.66448e-18
+CA31 VDD#263 net0144 2.53524e-18
+CA32 VDD#293 net065 2.37729e-18
+CA33 VDD#298 net0146 2.21713e-18
+CA34 VDD#268 net061 2.54091e-18
+CA35 VDD#268 XMSA8#d 2.57729e-18
+CA36 XSEA1#s XMSA7#d 4.49583e-18
+CA37 VDD#273 net055 5.67356e-18
+CA38 VDD#268 net060 2.86097e-18
+CA39 XSLA5#s XSLA7#s 5.41773e-18
+CA40 VDD#298 XSLA7#s 1.09038e-17
+CA41 VDD#298 net0147 1.11576e-17
+CA42 XMLA2#s XSSA3#g 1.3288e-17
+CA43 XMLA2#s XMLA2#g 1.34775e-17
+CA44 XMLA2#s XSSA1#g 8.16263e-20
+CA45 XMLA2#s XMLA1#g 9.12653e-20
+CA46 XMLA2#s ml_b#18 4.1561e-18
+CA47 XMLA2#s ml_b#23 4.10917e-18
+CA48 VDD#263 ml_b#35 5.10192e-18
+CA49 XSSA5#s XSSA5#g 1.36482e-17
+CA50 XSSA5#s XSSA2#g 7.50625e-20
+CA51 XSSA5#s ml_cx#19 3.35021e-18
+CA52 XSSA5#s ml_cx#22 1.42204e-18
+CA53 VDD#263 ml_cx#3 1.13077e-17
+CA54 XCKA1#s XCKB1#d 7.66947e-18
+CA55 XMLA2#s XMLA0#g 1.41782e-20
+CA56 XSSA5#s XSSA0#g 1.89226e-20
+CA57 VDD#268 XMSA9#g 9.13626e-19
+CA58 VDD#298 XSLA4#g 9.25715e-19
+CA59 VDD#298 clkbb#46 7.8533e-18
+CA60 VDD#293 clkbb#46 8.24117e-18
+CA61 VDD#298 clkbb#26 1.43932e-18
+CA62 VDD#268 clkbb#19 1.35573e-18
+CA63 XMFA3#s XMFA3#g 1.38533e-17
+CA64 XMFA3#s XMFA0#g 8.2472e-20
+CA65 XMFA3#s ml_ax#35 1.6071e-18
+CA66 XMFA3#s ml_ax#41 8.27156e-19
+CA67 VDD#263 XMLA3#d 2.10214e-18
+CA68 VDD#263 ml_ax#44 3.93984e-18
+CA69 XSSA5#s XCKB1#g 1.34248e-17
+CA70 XSSA5#s XCKB0#g 1.14244e-19
+CA71 XSSA5#s clkb#42 1.27721e-18
+CA72 VDD#263 XMLA3#g 1.03519e-18
+CA73 VDD#293 XSSA4#g 9.78268e-19
+CA74 XSLA5#s XSLA3#g 1.96153e-20
+CA75 VDD#263 XMSA1#g 1.57741e-20
+CA76 VDD#293 clkb#55 5.18779e-18
+CA77 VDD#263 clkb#55 7.25081e-18
+CA78 VDD#293 clkb#49 1.44169e-17
+CA79 VDD clkb#49 5.76019e-18
+CA80 VDD#293 clkb#26 1.2532e-18
+CA81 VDD#293 clkb#35 2.42168e-22
+CA82 VDD#293 clkb#3 3.66075e-18
+CA83 VDD#263 clkb#19 1.4941e-18
+CA84 VDD#134 clkb#31 4.59148e-18
+
+* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+* >>> GAP: lines 101-1794 (~1694 lines) NOT VISIBLE in screenshots.
+* >>> Expected content (inferred from surrounding context):
+* >>>   - Bulk of CA* coupling caps between internal nets:
+* >>>       sl_bx#*, ml_ax#*, ml_b#*, ml_cx#*, clkb#*, clkbb#*,
+* >>>       XOUT0/1_*#g/d/s, XSSA*#*, XMLA*#*, XMFA*#*, XCKA/B*#*,
+* >>>       XMSA*#*, XSLA*#*, XSEA*#*, net0xx, VDD#xxx, VBB, VSS, VPP
+* >>>   - R* segments forming the chopped VDD/VSS power mesh
+* >>>     (VDD#134, VDD#143, VDD#263, VDD#268, VDD#273, VDD#293, VDD#298, ...)
+* >>>   - Rcb_2_G*, Rt_1_G*, RvG*, RuG*, RzG* metal/poly segments
+* >>>   - CG* gate-to-ground caps
+* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+Rcb_2_G383 XSSA5#d net065 0.001020 $active
+CG92 XMLA3#s 0 2.9214e-18
+Rcb_2_G384 XMLA3#s net0144 0.001020 $active
+Rcb_2_G385 XMLA2#d net0144 0.001020 $active
+CG93 XMFA4#d 0 1.60342e-18
+RzG386 XMFA5#s XMFA3#d 0.002041
+RvG387 net0145 XMFA5#s 2.151020
+RuG388 net0145 XMFA3#d 2.151020
+Rt_1_G389 net0145 XMFA4#d 848.410217
+XOUT0_1 XOUT0_1#d XOUT0_1#g XOUT0_1#s VBB nch_svt_mac L=3e-09 W=1.9e-08 AD=4.275e-16 AS=8.55e-16 PD=6.4e-08 PS=1.28e-07 NRD=0 NRS=0 fbound=9 match=0 total=4 dfm_flag=1 smbt=8.8e-08 smbb=2.3e-08 mbetflag=8 mbebflag=8 tsa1=1.44e-07 tsa2=0 tsa3=0 tsa4=0 tsa5=0 tsb1=9.6e-07 tsb2=0 tsb3=0 tsb4=0 tsb5=0 twa1=1.9e-08 twa2=0 twa3=0 twa4=0 twa5=0 twb1=1.9e-08 twb2=0 twb3=0 twb4=0 twb5=0 scpodea1=4.5e-08 scpodea2=1.41e-07 scpodeb1=9.3e-08 scpodeb2=3.33e-07 spot=1.425e-07 spob=7.75e-08 svgot1=1e-06 svgob1=1e-06 svgit1=1.35e-08 svgib1=1.75e-08 matchscaling=0 matchingflag=0 edgeflag=0 ccodflag=0 ccosflag=0 rcodflag=0 rcosflag=0 rgflag=0
+XOUT0_2 XOUT0_2#d XOUT0_2#g XOUT0_2#s VBB nch_svt_mac L=3e-09 W=1.9e-08 AD=4.275e-16 AS=8.55e-16 PD=6.4e-08 PS=1.28e-07 NRD=0 NRS=0 fbound=9 match=0 total=4 dfm_flag=1 smbt=2.3e-08 smbb=8.8e-08 mbetflag=8 mbebflag=8 tsa1=1.44e-07 tsa2=0 tsa3=0 tsa4=0 tsa5=0 tsb1=9.6e-07 tsb2=0 tsb3=0 tsb4=0 tsb5=0 twa1=1.9e-08 twa2=0 twa3=0 twa4=0 twa5=0 twb1=1.9e-08 twb2=0 twb3=0 twb4=0 twb5=0 scpodea1=4.5e-08 scpodea2=1.41e-07 scpodeb1=9.3e-08 scpodeb2=3.81e-07 spot=7.75e-08 spob=1.425e-07 svgot1=1e-06 svgob1=4.75e-08 svgit1=7.85e-08 svgib1=5e-07 matchscaling=0 matchingflag=0 edgeflag=0 ccodflag=0 ccosflag=0 rcodflag=0 rcosflag=0 rgflag=0
+XOUT0_3 XOUT0_3#d XOUT0_3#g XOUT0_3#s VBB nch_svt_mac L=3e-09 W=1.9e-08 AD=4.275e-16 AS=8.55e-16 PD=6.4e-08 PS=1.28e-07 NRD=0 NRS=0 fbound=9 match=0 total=4 dfm_flag=1 smbt=8.8e-08 smbb=2.3e-08 mbetflag=8 mbebflag=8 tsa1=1.92e-07 tsa2=0 tsa3=0 tsa4=0 tsa5=0 tsb1=9.12e-07 tsb2=0 tsb3=0 tsb4=0 tsb5=0 twa1=1.9e-08 twa2=0 twa3=0 twa4=0 twa5=0 twb1=1.9e-08 twb2=0 twb3=0 twb4=0 twb5=0 scpodea1=9.3e-08 scpodea2=1.89e-07 scpodeb1=4.5e-08 scpodeb2=2.85e-07 spot=1.425e-07 spob=7.75e-08 svgot1=1e-06 svgob1=1e-06 svgit1=1.35e-08 svgib1=1.75e-08 matchscaling=0 matchingflag=0 edgeflag=0 ccodflag=0 ccosflag=0 rcodflag=0 rcosflag=0 rgflag=0
+XOUT0_4 XOUT0_4#d XOUT0_4#g XOUT0_4#s VBB nch_svt_mac L=3e-09 W=1.9e-08 AD=4.275e-16 AS=8.55e-16 PD=6.4e-08 PS=1.28e-07 NRD=0 NRS=0 fbound=9 match=0 total=4 dfm_flag=1 smbt=2.3e-08 smbb=8.8e-08 mbetflag=8 mbebflag=8 tsa1=1.92e-07 tsa2=0 tsa3=0 tsa4=0 tsa5=0 tsb1=9.12e-07 tsb2=0 tsb3=0 tsb4=0 tsb5=0 twa1=1.9e-08 twa2=0 twa3=0 twa4=0 twa5=0 twb1=1.9e-08 twb2=0 twb3=0 twb4=0 twb5=0 scpodea1=9.3e-08 scpodea2=1.89e-07 scpodeb1=4.5e-08 scpodeb2=3.33e-07 spot=7.75e-08 spob=1.425e-07 svgot1=1e-06 svgob1=4.75e-08 svgit1=7.85e-08 svgib1=5e-07 matchscaling=0 matchingflag=0 edgeflag=0 ccodflag=0 ccosflag=0 rcodflag=0 rcosflag=0 rgflag=0
+XSFA0_1 XSFA0_1#d XSFA0_1#g XSFA0_1#s VBB nch_svt_mac L=3e-09 W=1.9e-08 AD=8.55e-16 AS=8.55e-16 PD=6.4e-08 PS=1.28e-07 NRD=0 NRS=0 fbound=9 match=0 total=2 dfm_flag=1 smbt=1000000 smbb=2.3e-08 mbetflag=0 mbebflag=8 tsa1=2.88e-07 tsa2=0 tsa3=0 tsa4=0 tsa5=0 tsb1=8.16e-07 tsb2=0 tsb3=0 tsb4=0 tsb5=0 twa1=1.9e-08 twa2=0 twa3=0 twa4=0 twa5=0 twb1=1.9e-08 twb2=0 twb3=0 twb4=0 twb5=0 scpodea1=4.5e-08 scpodea2=1.89e-07 scpodeb1=1.89e-07 scpodeb2=3.33e-07 spot=1.25e-08 spob=7.75e-08 svgot1=1e-06 svgob1=2.85e-08 svgit1=5.95e-08 svgib1=1.015e-07 matchscaling=0 matchingflag=0 edgeflag=0 ccodflag=0 ccosflag=0 rcodflag=0 rcosflag=0 rgflag=0
+XSEA0 XSEA0#d XSEA0#g XSEA0#s VBB nch_svt_mac L=3e-09 W=1.9e-08 AD=8.55e-16 AS=4.275e-16 PD=1.28e-07 PS=6.4e-08 NRD=0 NRS=0 fbound=9 match=0 total=1 dfm_flag=1 smbt=2.3e-08 smbb=1000000 mbetflag=8 mbebflag=0 tsa1=2.88e-07 tsa2=0 tsa3=0 tsa4=0 tsa5=0 tsb1=8.16e-07 tsb2=0 tsb3=0 tsb4=0 tsb5=0 twa1=1.9e-08 twa2=0 twa3=0 twa4=0 twa5=0 twb1=1.9e-08 twb2=0 twb3=0 twb4=0 twb5=0 scpodea1=4.5e-08 scpodea2=1.89e-07 scpodeb1=2.37e-07 scpodeb2=3.33e-07 spot=7.75e-08 spob=1.25e-08 svgot1=5.5e-09 svgob1=1e-06 svgit1=1.245e-07 svgib1=3.65e-08 matchscaling=0 matchingflag=0 edgeflag=0 ccodflag=0 ccosflag=0 rcodflag=0 rcosflag=0 rgflag=0
+XSFA0_2 XSFA0_2#d XSFA0_2#g XSFA0_2#s VBB nch_svt_mac L=3e-09 W=1.9e-08 AD=4.275e-16 AS=4.275e-16 PD=6.4e-08 PS=6.4e-08 NRD=0 NRS=0 fbound=9 match=0 total=2 dfm_flag=1 smbt=1000000 smbb=2.3e-08 mbetflag=0 mbebflag=8 tsa1=3.36e-07 tsa2=0 tsa3=0 tsa4=0 tsa5=0 tsb1=7.68e-07 tsb2=0 tsb3=0 tsb4=0 tsb5=0 twa1=1.9e-08 twa2=0 twa3=0 twa4=0 twa5=0 twb1=1.9e-08 twb2=0 twb3=0 twb4=0 twb5=0 scpodea1=9.3e-08 scpodea2=2.37e-07 scpodeb1=1.41e-07 scpodeb2=2.85e-07 spot=1.25e-08 spob=7.75e-08 svgot1=1e-06 svgob1=2.85e-08 svgit1=5.95e-08 svgib1=7.85e-08 matchscaling=0 matchingflag=0 edgeflag=0 ccodflag=0 ccosflag=0 rcodflag=0 rcosflag=0 rgflag=0
+
+* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+* >>> GAP: lines 1811-1847 (37 lines) NOT VISIBLE in screenshots.
+* >>> Expected content:
+* >>>   - Remainder of NMOS devices (nch_svt_mac, bulk=VBB), likely:
+* >>>     master-latch N side (XMLA0..2 N?, XMSA*), slave-latch N side
+* >>>     (XSSA0..2 N?, XSLA*), scan-mux N, CD-reset N, possibly clock N
+* >>>     (XCKA0/XCKB0)
+* >>>   - Transition to PMOS section starting at ~line 1848
+* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+XSSA4 XSSA4#d XSSA4#g XSSA4#s VPP pch_svt_mac L=3e-09 W=1.9e-08 AD=8.55e-16 AS=4.275e-16 PD=1.28e-07 PS=6.4e-08 NRD=0 NRS=0 fbound=9 match=0 total=1 dfm_flag=1 smbt=1000000 smbb=1000000 mbetflag=0 mbebflag=0 tsa1=6.72e-07 tsa2=0 tsa3=0 tsa4=0 tsa5=0 tsb1=4.32e-07 tsb2=0 tsb3=0 tsb4=0 tsb5=0 twa1=1.9e-08 twa2=0 twa3=0 twa4=0 twa5=0 twb1=1.9e-08 twb2=0 twb3=0 twb4=0 twb5=0 scpodea1=4.5e-08 scpodea2=1.89e-07 scpodeb1=1.41e-07 scpodeb2=2.37e-07 spot=1.25e-08 spob=1.25e-08 svgot1=1e-06 svgob1=1e-06 svgit1=1.75e-08 svgib1=1.35e-08 matchscaling=0 matchingflag=0 edgeflag=0 ccodflag=0 ccosflag=0 rcodflag=0 rcosflag=0 rgflag=0
+XMLA3 XMLA3#d XMLA3#g XMLA3#s VPP pch_svt_mac L=3e-09 W=1.9e-08 AD=8.55e-16 AS=4.275e-16 PD=1.28e-07 PS=6.4e-08 NRD=0 NRS=0 fbound=9 match=0 total=1 dfm_flag=1 smbt=1000000 smbb=1000000 mbetflag=0 mbebflag=0 tsa1=6.72e-07 tsa2=0 tsa3=0 tsa4=0 tsa5=0 tsb1=4.32e-07 tsb2=0 tsb3=0 tsb4=0 tsb5=0 twa1=1.9e-08 twa2=0 twa3=0 twa4=0 twa5=0 twb1=1.9e-08 twb2=0 twb3=0 twb4=0 twb5=0 scpodea1=4.5e-08 scpodea2=3.33e-07 scpodeb1=1.41e-07 scpodeb2=3.33e-07 spot=1.25e-08 spob=1.25e-08 svgot1=1e-06 svgob1=1e-06 svgit1=1.35e-08 svgib1=1.75e-08 matchscaling=0 matchingflag=0 edgeflag=0 ccodflag=0 ccosflag=0 rcodflag=0 rcosflag=0 rgflag=0
+XSSA5 XSSA5#d XSSA5#g XSSA5#s VPP pch_svt_mac L=3e-09 W=1.9e-08 AD=4.275e-16 AS=4.275e-16 PD=6.4e-08 PS=6.4e-08 NRD=0 NRS=0 fbound=9 match=0 total=1 dfm_flag=1 smbt=2.3e-08 smbb=1000000 mbetflag=1 mbebflag=0 tsa1=7.2e-07 tsa2=0 tsa3=0 tsa4=0 tsa5=0 tsb1=3.84e-07 tsb2=0 tsb3=0 tsb4=0 tsb5=0 twa1=1.9e-08 twa2=0 twa3=0 twa4=0 twa5=0 twb1=1.9e-08 twb2=0 twb3=0 twb4=0 twb5=0 scpodea1=9.3e-08 scpodea2=2.37e-07 scpodeb1=9.3e-08 scpodeb2=1.89e-07 spot=7.75e-08 spob=1.25e-08 svgot1=5.5e-09 svgob1=1e-06 svgit1=5e-07 svgib1=3.65e-08 matchscaling=0 matchingflag=0 edgeflag=0 ccodflag=0 ccosflag=0 rcodflag=0 rcosflag=0 rgflag=0
+XMLA2 XMLA2#d XMLA2#g XMLA2#s VPP pch_svt_mac L=3e-09 W=1.9e-08 AD=4.275e-16 AS=4.275e-16 PD=6.4e-08 PS=6.4e-08 NRD=0 NRS=0 fbound=9 match=0 total=1 dfm_flag=1 smbt=1000000 smbb=2.3e-08 mbetflag=0 mbebflag=1 tsa1=7.2e-07 tsa2=0 tsa3=0 tsa4=0 tsa5=0 tsb1=3.84e-07 tsb2=0 tsb3=0 tsb4=0 tsb5=0 twa1=1.9e-08 twa2=0 twa3=0 twa4=0 twa5=0 twb1=1.9e-08 twb2=0 twb3=0 twb4=0 twb5=0 scpodea1=9.3e-08 scpodea2=3.81e-07 scpodeb1=9.3e-08 scpodeb2=2.85e-07 spot=1.25e-08 spob=7.75e-08 svgot1=1e-06 svgob1=5.5e-09 svgit1=3.65e-08 svgib1=5e-07 matchscaling=0 matchingflag=0 edgeflag=0 ccodflag=0 ccosflag=0 rcodflag=0 rcosflag=0 rgflag=0
+XCKB1 XCKB1#d XCKB1#g XCKB1#s VPP pch_svt_mac L=3e-09 W=1.9e-08 AD=8.55e-16 AS=4.275e-16 PD=1.28e-07 PS=6.4e-08 NRD=0 NRS=0 fbound=9 match=0 total=1 dfm_flag=1 smbt=2.3e-08 smbb=1000000 mbetflag=1 mbebflag=0 tsa1=7.68e-07 tsa2=0 tsa3=0 tsa4=0 tsa5=0 tsb1=3.36e-07 tsb2=0 tsb3=0 tsb4=0 tsb5=0 twa1=1.9e-08 twa2=0 twa3=0 twa4=0 twa5=0 twb1=1.9e-08 twb2=0 twb3=0 twb4=0 twb5=0 scpodea1=1.41e-07 scpodea2=2.85e-07 scpodeb1=4.5e-08 scpodeb2=1.41e-07 spot=7.75e-08 spob=1.25e-08 svgot1=1e-06 svgob1=1e-06 svgit1=1.75e-08 svgib1=1.35e-08 matchscaling=0 matchingflag=0 edgeflag=0 ccodflag=0 ccosflag=0 rcodflag=0 rcosflag=0 rgflag=0
+XSSA3 XSSA3#d XSSA3#g XSSA3#s VPP pch_svt_mac L=3e-09 W=1.9e-08 AD=8.55e-16 AS=4.275e-16 PD=1.28e-07 PS=6.4e-08 NRD=0 NRS=0 fbound=9 match=0 total=1 dfm_flag=1 smbt=1000000 smbb=2.3e-08 mbetflag=0 mbebflag=1 tsa1=7.68e-07 tsa2=0 tsa3=0 tsa4=0 tsa5=0 tsb1=3.36e-07 tsb2=0 tsb3=0 tsb4=0 tsb5=0 twa1=1.9e-08 twa2=0 twa3=0 twa4=0 twa5=0 twb1=1.9e-08 twb2=0 twb3=0 twb4=0 twb5=0 scpodea1=1.41e-07 scpodea2=4.29e-07 scpodeb1=4.5e-08 scpodeb2=2.37e-07 spot=1.25e-08 spob=7.75e-08 svgot1=1e-06 svgob1=5.5e-09 svgit1=3.65e-08 svgib1=5e-07 matchscaling=0 matchingflag=0 edgeflag=0 ccodflag=0 ccosflag=0 rcodflag=0 rcosflag=0 rgflag=0
+XCKA1 XCKA1#d XCKA1#g XCKA1#s VPP pch_svt_mac L=3e-09 W=1.9e-08 AD=8.55e-16 AS=8.55e-16 PD=1.28e-07 PS=1.28e-07 NRD=0 NRS=0 fbound=9 match=0 total=1 dfm_flag=1 smbt=2.3e-08 smbb=1000000 mbetflag=1 mbebflag=0 tsa1=8.64e-07 tsa2=0 tsa3=0 tsa4=0 tsa5=0 tsb1=2.4e-07 tsb2=0 tsb3=0 tsb4=0 tsb5=0 twa1=1.9e-08 twa2=0 twa3=0 twa4=0 twa5=0 twb1=1.9e-08 twb2=0 twb3=0 twb4=0 twb5=0 scpodea1=4.5e-08 scpodea2=2.37e-07 scpodeb1=4.5e-08 scpodeb2=1.41e-07 spot=7.75e-08 spob=1.25e-08 svgot1=5.15e-08 svgob1=1e-06 svgit1=5e-07 svgib1=8.25e-08 matchscaling=0 matchingflag=0 edgeflag=0 ccodflag=0 ccosflag=0 rcodflag=0 rcosflag=0 rgflag=0
+XMFA5 XMFA5#d XMFA5#g XMFA5#s VPP pch_svt_mac L=3e-09 W=1.9e-08 AD=8.55e-16 AS=4.275e-16 PD=1.28e-07 PS=6.4e-08 NRD=0 NRS=0 fbound=9 match=0 total=1 dfm_flag=1 smbt=1000000 smbb=2.3e-08 mbetflag=0 mbebflag=1 tsa1=8.64e-07 tsa2=0 tsa3=0 tsa4=0 tsa5=0 tsb1=2.4e-07 tsb2=0 tsb3=0 tsb4=0 tsb5=0 twa1=1.9e-08 twa2=0 twa3=0 twa4=0 twa5=0 twb1=1.9e-08 twb2=0 twb3=0 twb4=0 twb5=0 scpodea1=4.5e-08 scpodea2=2.37e-07 scpodeb1=1.41e-07 scpodeb2=2.37e-07 spot=1.25e-08 spob=7.75e-08 svgot1=1e-06 svgob1=1e-06 svgit1=1.35e-08 svgib1=1.75e-08 matchscaling=0 matchingflag=0 edgeflag=0 ccodflag=0 ccosflag=0 rcodflag=0 rcosflag=0 rgflag=0
+XMFA3 XMFA3#d XMFA3#g XMFA3#s VPP pch_svt_mac L=3e-09 W=1.9e-08 AD=4.275e-16 AS=4.275e-16 PD=6.4e-08 PS=6.4e-08 NRD=0 NRS=0 fbound=9 match=0 total=1 dfm_flag=1 smbt=1000000 smbb=2.3e-08 mbetflag=0 mbebflag=1 tsa1=9.12e-07 tsa2=0 tsa3=0 tsa4=0 tsa5=0 tsb1=1.92e-07 tsb2=0 tsb3=0 tsb4=0 tsb5=0 twa1=1.9e-08 twa2=0 twa3=0 twa4=0 twa5=0 twb1=1.9e-08 twb2=0 twb3=0 twb4=0 twb5=0 scpodea1=9.3e-08 scpodea2=2.85e-07 scpodeb1=9.3e-08 scpodeb2=1.89e-07 spot=1.25e-08 spob=7.75e-08 svgot1=1e-06 svgob1=2.85e-08 svgit1=5.95e-08 svgib1=5e-07 matchscaling=0 matchingflag=0 edgeflag=0 ccodflag=0 ccosflag=0 rcodflag=0 rcosflag=0 rgflag=0
+XMFA4 XMFA4#d XMFA4#g XMFA4#s VPP pch_svt_mac L=3e-09 W=1.9e-08 AD=8.55e-16 AS=4.275e-16 PD=1.28e-07 PS=6.4e-08 NRD=0 NRS=0 fbound=9 match=0 total=1 dfm_flag=1 smbt=1000000 smbb=2.3e-08 mbetflag=0 mbebflag=1 tsa1=9.6e-07 tsa2=0 tsa3=0 tsa4=0 tsa5=0 tsb1=1.44e-07 tsb2=0 tsb3=0 tsb4=0 tsb5=0 twa1=1.9e-08 twa2=0 twa3=0 twa4=0 twa5=0 twb1=1.9e-08 twb2=0 twb3=0 twb4=0 twb5=0 scpodea1=1.41e-07 scpodea2=3.33e-07 scpodeb1=4.5e-08 scpodeb2=1.41e-07 spot=1.25e-08 spob=1.425e-07 svgot1=1e-06 svgob1=5.15e-08 svgit1=8.25e-08 svgib1=5e-07 matchscaling=0 matchingflag=0 edgeflag=0 ccodflag=0 ccosflag=0 rcodflag=0 rcosflag=0 rgflag=0
+.ends
