@@ -1,0 +1,1050 @@
+# FMC image OCR / parsed text notes
+
+This file is an append-friendly transcription workspace for the terminal screenshots shared in chat.  The text below is manually parsed from the images, so entries marked `[uncertain]` should be verified against the real `fastmontecarlo.log` or OCR output when available.
+
+## Part 1 — Fast Monte Carlo terminal screenshots
+
+### 1. Startup / header section
+
+```text
+2025-07-09 06:47:55,986 - root - INFO - Starting Fast Monte Carlo analysis
+2025-07-09 06:47:55,986 - root - INFO - Computing the theoretical number of samples required to match user requested CI accuracy of 0.075
+2025-07-09 06:47:55,988 - root - INFO - The recommended min number of samples is 25000
+2025-07-09 06:47:55,988 - root - INFO - Constraint confidence interval relative accuracy not changed
+2025-07-09 06:47:55,988 - root - INFO - THANOS_HOME is set to /CAD/stdcell/DesignKits/Sponsor/Script/MCQC_automation/Tool_home/Fast_MC_Flow/v9.3.2
+2025-07-09 06:47:55,988 - root - INFO - THANOS_VERSION is set to 9.1.8
+2025-07-09 06:47:55,988 - root - INFO - RELEASE DATE 2021-09-21
+Copyright TSMC Technology Incorporated. All rights reserved.
+```
+
+### 2. Environment / package / license section
+
+```text
+2025-07-09 06:47:55,989 - root - INFO - Master started on machine f15lnx2478
+2025-07-09 06:47:55,989 - root - INFO - Master PID is 3573
+2025-07-09 06:47:55,989 - root - INFO - Using numpy module version 1.22.4
+2025-07-09 06:47:55,989 - root - INFO - Using scipy module version 1.10.1
+2025-07-09 06:47:55,989 - root - INFO - Using sklearn module version 1.2.2
+2025-07-09 06:47:55,989 - root - INFO - Using zmq module version 25.0.2
+2025-07-09 06:47:55,989 - root - INFO - Using zmq version 4.3.4
+2025-07-09 06:47:55,989 - root - INFO - Mapping lumped options.
+2025-07-09 06:47:55,990 - root - INFO - Setting 'percentile_point' to '99.86501019683699'
+2025-07-09 06:47:55,990 - root - INFO - License path :: 27020@sjlic5:27020@lic20:27020@f15p7lic20:27020@f15lic3:27020@f15lic4:27020@dlinux96
+```
+
+### 3. User options / configuration block
+
+The screenshots show option lines in the format:
+
+```text
+<timestamp> - root - INFO - <OPTION_NAME> :: <VALUE>
+```
+
+Observed options and values:
+
+```text
+ADAPTIVE_CI_CONSTRAINT_PERCENTAGE :: 1.15
+ADAPTIVE_CI_CONSTRAINT_THRESHOLD  :: 1e-11
+ADAPTIVE_CI_DELAY_PERCENTAGE      :: 0.04
+ADAPTIVE_CI_DELAY_THRESHOLD       :: 2e-12
+ADAPTIVE_CI_MAX_NSAMPLES          :: 250000
+ADAPTIVE_CI_PATH_PERCENTAGE       :: 0.04
+ADAPTIVE_CI_PATH_THRESHOLD        :: 1e-11
+ADAPTIVE_CI_SAMPLING              :: True
+ADAPTIVE_CI_SLEW_PERCENTAGE       :: 0.08
+ADAPTIVE_CI_SLEW_THRESHOLD        :: 4e-12
+AGING_FLAG                        :: False
+BATCH_SIZE                        :: 5
+BURST_MODE                        :: 2
+CASE_INSENSITIVE_DMY              :: 1
+CLIENT_ARGS                       :: -arch COMPATIBLE
+CLIENT_OUTPUT_SUBDIR              :: THANOS_CLIENT_OUTPUT
+CLIENT_PRESIM_PING                :: 0
+CLIENT_TIMEOUT_MS                 :: 1800000
+COMPUTE_PERCENTILE                :: True
+CONVERGENCE_METHOD                :: 1
+CONVERGENCE_WINDOW_SIZE           :: 100
+EQUIVALENT_SIGMA                  :: 3
+EWA_BETA                          :: 0.9
+FINAL_MODEL_FILENAME              :: mdl.final.pkl
+FINFET_TECH                       :: 1
+FULL_MC_FLAG                      :: False
+GENERATE_SAMPLES_AFTER_LOAD       :: False
+HIGH_VOLTAGE_FLAG                 :: False
+HOST_TYPE                         :: lsf
+HSPICE_CSHRC                      :: /tools/dotfile_new/cshrc.hspice
+HSPICE_VERSION                    :: V-2023.12-SP2-2
+IGNORE_MODE                       :: 1
+INITIAL_SEED                      :: 0
+LIC_SERVERS                       :: 0
+LOAD_DATA                         :: None
+LOAD_FILE                         :: False
+LOGFILE_NAME                      :: fastmontecarlo.log
+LSF_MEMORY_LIMIT                  :: 10
+LSF_QUEUE                         :: all
+LSF_RESOURCE_SPEC                 :: select[(ostype=RHEL7.7) || (ostype=RHEL8.6)]
+MAIN_PARAM_NAME                   :: parl1
+MAX_NFAILING                      :: 0
+MAX_NSIMS                         :: 596
+MIN_TAIL_NSAMPLES                 :: 7
+MOS_NAME_PREFIX                   :: x
+MULTI_SIGMA_MODE                  :: 5
+NCLIENTS                          :: 0
+NSAMPL                            :: 5
+OPT_MEAS_NAMES                    :: cp2d
+OUTPUT_PATH                       :: ./
+PERCENTILE_POINT                  :: 99.86501019683699
+PROCESS_NODE                      :: n2
+QUANTILE_TYPE                     :: max
+RELIN                             :: 1e-13
+RETRAIN                           :: True
+RETRAIN_BATCH_SIZE                :: 10
+RETRAIN_METHOD                    :: direct
+SAMPLING_METHOD                   :: LHS
+SAVE_FINAL_MODEL                  :: False
+SAVE_SAMPLES_IN_FINAL_MODEL       :: False
+SIMULATOR                         :: /CAD/DCAD/bin/intelligent_queue/hspice
+SIMULATOR_TYPE                    :: hspice
+SIM_TYPE                          :: bisect
+SPAWN_CLIENT_ON_MASTER            :: False
+SPICE_DECK                        :: ./mc_sim.sp
+TARGET_TYPE                       :: constraint
+TEMP_MODEL_FILENAME               :: mdl.sens.coeff_samples.pkl
+THANOS_HOME                       :: /CAD/stdcell/DesignKits/Sponsor/Script/MCQC_automation/Tool_home/Fast_MC_Flow/v9.3.2
+ULTRA_LOW_VOLTAGE_FLAG            :: False
+USER_FILE                         :: [blank / not visible]
+XTOR_FILTER_FILES                 :: [blank / not visible]
+XTOR_FILTER_MODE                  :: 0
+XTOR_IMPORTANCE_CHECK_BY_RSS      :: True
+XTOR_IMPORTANCE_THRESHOLD         :: 0.3
+```
+
+### 4. HSPICE Python API / client startup
+
+```text
+2025-07-09 06:47:56,018 - HSPICE Python API - INFO -
+    Primesim HSPICE Python API ***** Copyright (c) 1986 - 2023 by Synopsys, Inc. All Rights Reserved.
+2025-07-09 06:47:56,019 - HSPICE Python API - INFO - Build time: Mon Aug 05 20:34:46 2024
+2025-07-09 06:47:56,020 - root - INFO - Importing hspice API module from /tools/synopsys/hspice/V-2023.12-SP2-2/hspice/linux64/python/hspice.cpython-39-x86_64-linux-gnu.so
+2025-07-09 06:47:56,020 - root - INFO - current executable is /usr/local/python/3.9.10/bin/python3.9
+2025-07-09 06:47:56,021 - root - INFO - Binded to port 45939 server <zmq.Socket(zmq.ROUTER) at 0x2b72ae6c50a0>
+```
+
+Client spawn pattern shown for clients 0 through 4:
+
+```text
+Spawn client 0
+Spawn command ['/bin/csh', '-f', '-c', 'bsub -q all.q -M 10 -e ./THANOS_CLIENT_OUTPUT/client_0.err -o /dev/null -n 1 -R "select[(ostype=RHEL7.7) || (ostype=RHEL8.6)]" "/usr/local/python/3.9.10/bin/python3.9 /CAD/stdcell/DesignKits/Sponsor/Script/MCQC_automation/Tool_home/Fast_MC_Flow/v9.3.2/distributed/client_hspice.py /CAD/DCAD/bin/intelligent_queue/hspice 0 ./mc_sim.sp ./THANOS_CLIENT_OUTPUT 0 45939 0 1"']
+Successfully added client '0' to the broker.
+Client 0 spawned.
+Associated Job ID is 59183785
+
+Spawn client 1
+Associated Job ID is 59183793
+
+Spawn client 2
+Associated Job ID is 59183801
+
+Spawn client 3
+Associated Job ID is 59183819
+
+Spawn client 4
+Associated Job ID is 59183844
+```
+
+Additional client-management lines:
+
+```text
+Socket poll time set to 1800000.0 [ms].
+Checking client activity.
+Begin checking client activity.
+No messages received for 60000 ms.
+Client 0 is not active yet.
+Client 1 is not active yet.
+Client 2 is not active yet.
+Client 3 is not active yet.
+Client 4 is not active yet.
+There are 0 active clients.
+We require 1 active clients before breaking from checking client activity.
+There are not enough active clients.
+Continue checking client activity.
+```
+
+### 5. Client readiness / model simulation options
+
+```text
+2025-07-09 07:36:09,041 - root - DEBUG - Received INFO:::READY contents
+2025-07-09 07:36:09,042 - root - INFO - 1 clients are active.
+2025-07-09 07:37:04,621 - root - DEBUG - Received INFO:::READY contents
+2025-07-09 07:37:04,622 - root - INFO - 2 clients are active.
+2025-07-09 07:37:05,096 - root - DEBUG - Received INFO:::READY contents
+2025-07-09 07:37:05,097 - root - INFO - 3 clients are active.
+2025-07-09 07:38:05,197 - root - INFO - No messages received for 60000 ms.
+2025-07-09 07:38:05,198 - root - INFO - Client 3 is not active yet.
+2025-07-09 07:38:05,198 - root - INFO - Client 4 is not active yet.
+2025-07-09 07:38:05,199 - root - INFO - Done checking client activity.
+2025-07-09 07:38:05,299 - root - INFO - Pinging client 0 for information.
+2025-07-09 07:38:05,301 - root - DEBUG - Successfully received ACK from client 0
+```
+
+Model simulation options hash, parsed from the long dictionary line:
+
+```text
+sim_type: bisect
+spice_deck: ./mc_sim.sp
+opt_meas_names: ['cp2d']
+high_voltage: False
+sample_type: nominal
+worst_time_value: 1.0
+best_time_value: 1.0
+nominal_time_value: 1.0
+conv_radius_value: 1.0
+all_meas_names: ['cp2q_del1', 'cp2q_del2', 'cp2d']
+result_meas_names: ['cp2q_del1', 'cp2q_del2']
+result_meas_percs: [1.4, None]
+result_meas_dirs: [1.0, 1.0]
+result_meas_minmax: [(None, None), (None, None)]
+bisection_type: pushout
+constr_pin_param: constrained_pin_to2 [uncertain]
+relin: 1e-13
+```
+
+Follow-up lines:
+
+```text
+Using client 0 to extract SPICE parameters.
+Applying XTOR filter.
+XTOR filter list is empty.
+Finished applying XTOR filter.
+Getting sensitivity data.
+Computing nominal value.
+Client 0 is available.
+sample_id NOMINAL is simulated for first time.
+Marked client as working.
+Simulating sample NOMINAL on client 0
+No samples left to simulate.
+Received ACK:::REQUEST_RECEIVED contents
+Received INFO:::SIMULATION_COMPLETE contents
+Received SIM_RESULTS:::-2.412656e-10:::1.5966189273333553e-07:::0.0 contents
+Sample queue is done with simulation.
+Nominal value set to -2.412656e-10.
+Starting createSensitivitySampleQueue
+Starting getSampleDictForSensitivity
+```
+
+### 6. Sensitivity sample assignment / simulation loop
+
+Observed repeated assignment pattern:
+
+```text
+Requested sample assignments set to [('x1.xout0_1', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xout0_2', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xout0_3', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xout0_4', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xsfa0_1', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xsea0', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xsfa0_2', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xmsa3', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xsla2', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xmsa2', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xsla0', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xmsa4', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xsla1', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xsla3', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xmsa1', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xssa0', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xma0', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xssa2', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xmla1', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xckb0', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xssa1', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xcka0_1', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xmfa1', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xcka0_2', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xmfa0', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xmfa2', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xout1_1', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xout1_2', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xout1_3', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xout1_4', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xsfa1_1', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xsea1', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xsfa1_2', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xsla6', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xmsa7', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xsla5', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xmsa5', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xmsa6', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xsla7', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xmsa8', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xsla4', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xmsa9', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xssa4', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xmla3', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xssa5', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xmla2', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xckb1', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xssa3', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xcka1', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xmfa5', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xmfa3', 'parl1', 3.0)]
+Requested sample assignments set to [('x1.xmfa4', 'parl1', 3.0)]
+```
+
+Observed loop statuses:
+
+```text
+Starting simulateSampleQueue
+Client 0 is available.
+sample_id x1.xout0_1:parl1:3.0 is simulated for first time.
+Marked client as working.
+Simulating sample x1.xout0_1:parl1:3.0 on client 0
+Client 1 is available.
+sample_id x1.xout0_2:parl1:3.0 is simulated for first time.
+Marked client as working.
+Simulating sample x1.xout0_2:parl1:3.0 on client 1
+Client 2 is available.
+sample_id x1.xout0_3:parl1:3.0 is simulated for first time.
+Marked client as working.
+Simulating sample x1.xout0_3:parl1:3.0 on client 2
+Client 3 is available.
+sample_id x1.xout0_4:parl1:3.0 is simulated for first time.
+Marked client as working.
+Simulating sample x1.xout0_4:parl1:3.0 on client 3
+Client 4 is available.
+sample_id x1.xsfa0_1:parl1:3.0 is simulated for first time.
+Marked client as working.
+Simulating sample x1.xsfa0_1:parl1:3.0 on client 4
+```
+
+Repeated completion/result pattern:
+
+```text
+Received ACK:::REQUEST_RECEIVED contents
+0 samples need to be resubmitted.
+Received INFO:::SIMULATION_COMPLETE contents
+Received SIM_RESULTS:::-2.411026e-10:::1.5966196949097114e-07:::0.0 contents
+```
+
+### 7. Parameter and simulated value section
+
+After the sample queue is done with simulation, the log prints many rows in this format:
+
+```text
+Parameter and simulated value ('<sample_id>', <value1>, <value2>, 0.0)
+```
+
+Visible examples:
+
+```text
+Parameter and simulated value ('x1.xout0_3:parl1:3.0', -2.411026e-10, 1.5966196949097114e-07, 0.0)
+Parameter and simulated value ('x1.xout0_4:parl1:3.0', -2.411026e-10, 1.5966196949097114e-07, 0.0)
+Parameter and simulated value ('x1.xsfa0_1:parl1:3.0', -2.411026e-10, 1.5966196949097114e-07, 0.0)
+Parameter and simulated value ('x1.xsfa0_2:parl1:3.0', -2.410776e-10, 1.5966221997634381e-07, 0.0)
+Parameter and simulated value ('x1.xout0_2:parl1:3.0', -2.414076e-10, 1.5966181697555978e-07, 0.0)
+Parameter and simulated value ('x1.xout0_1:parl1:3.0', -2.411026e-10, 1.5966196949097114e-07, 0.0)
+Parameter and simulated value ('x1.xsea0:parl1:3.0', -2.514076e-10, 1.59651665433609e-07, 0.0)
+Parameter and simulated value ('x1.xmsa3:parl1:3.0', -2.414076e-10, 1.5966181697555978e-07, 0.0)
+Parameter and simulated value ('x1.xsla2:parl1:3.0', -2.410258e-10, 1.5966219976343881e-07, 0.0)
+Parameter and simulated value ('x1.xmsa4:parl1:3.0', -2.436531e-10, 1.59659415809183e-07, 0.0)
+Parameter and simulated value ('x1.xmsa2:parl1:3.0', -2.401047e-10, 1.5966312085330946e-07, 0.0)
+Parameter and simulated value ('x1.xsla3:parl1:3.0', -2.411026e-10, 1.59662123005913e-07, 0.0)
+Parameter and simulated value ('x1.xmsa0:parl1:3.0', -2.394906e-10, 1.5966358139824478e-07, 0.0)
+Parameter and simulated value ('x1.xsla1:parl1:3.0', -2.414159e-10, 1.596618128325564e-07, 0.0)
+Parameter and simulated value ('x1.xsla0:parl1:3.0', -2.410258e-10, 1.5966204624846036e-07, 0.0)
+Parameter and simulated value ('x1.xssa0:parl1:3.0', -2.411026e-10, 1.5966212300583064e-07, 0.0)
+Parameter and simulated value ('x1.xssa2:parl1:3.0', -2.411505e-10, 1.5966194550411394e-07, 0.0)
+Parameter and simulated value ('x1.xssa1:parl1:3.0', -2.409394e-10, 1.596621565872276e-07, 0.0)
+Parameter and simulated value ('x1.xmla0:parl1:3.0', -2.231931e-10, 1.5967993008858704e-07, 0.0)
+Parameter and simulated value ('x1.xckb0:parl1:3.0', -2.373569e-10, 1.596580727627262e-07, 0.0)
+Parameter and simulated value ('x1.xmsa1:parl1:3.0', -2.263655e-10, 1.5967670654020098e-07, 0.0)
+Parameter and simulated value ('x1.xmfa1:parl1:3.0', -2.411151e-10, 1.5966196319175448e-07, 0.0)
+Parameter and simulated value ('x1.xmla1:parl1:3.0', -2.053349e-10, 1.5969773711280965e-07, 0.0)
+Parameter and simulated value ('x1.xcka0_1:parl1:3.0', -4.199555e-11, 1.5986107050740296e-07, 0.0)
+Parameter and simulated value ('x1.xcka0_2:parl1:3.0', -1.126247e-10, 1.5979048826604357e-07, 0.0)
+Parameter and simulated value ('x1.xout1_3:parl1:3.0', -2.414159e-10, 1.59618128325564e-07, 0.0)
+Parameter and simulated value ('x1.xout1_2:parl1:3.0', -2.410616e-10, 1.5966198998810804e-07, 0.0)
+Parameter and simulated value ('x1.xmfa0:parl1:3.0', -3.888726e-10, 1.595143519524095e-07, 0.0)
+Parameter and simulated value ('x1.xout1_4:parl1:3.0', -2.414172e-10, 1.59618128325564e-07, 0.0)
+Parameter and simulated value ('x1.xsfa1_1:parl1:3.0', -2.410622e-10, 1.5966198998810804e-07, 0.0)
+Parameter and simulated value ('x1.xsea1:parl1:3.0', -2.4375e-10, 1.5966183326438876e-07, 0.0)
+Parameter and simulated value ('x1.xsfa1_2:parl1:3.0', -2.410616e-10, 1.5966198998810804e-07, 0.0)
+Parameter and simulated value ('x1.xmsa7:parl1:3.0', -2.41061e-10, 1.596618206919386e-07, 0.0)
+Parameter and simulated value ('x1.xmsa5:parl1:3.0', -2.410616e-10, 1.5966198998810804e-07, 0.0)
+Parameter and simulated value ('x1.xsla5:parl1:3.0', -2.410616e-10, 1.5966198998810804e-07, 0.0)
+Parameter and simulated value ('x1.xsla6:parl1:3.0', 1.938039e-09, 1.5796519958038653e-07, 0.0)
+```
+
+## Part 2 — user-provided transcription / corrections
+
+The following section was provided as the second part of the screenshot transcription.  It refines and extends the sensitivity simulation section with explicit log line ranges and exact values.
+
+### 1. Nominal simulation completion `[627-644]`
+
+```text
+2025-07-09 07:38:05,332 - root - DEBUG - Marked client as working.
+2025-07-09 07:38:05,332 - root - INFO  - Simulating sample NOMINAL on client 0
+2025-07-09 07:38:05,334 - root - DEBUG - No samples left to simulate.
+2025-07-09 07:38:05,344 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:38:05,345 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:38:05,345 - root - DEBUG - No samples left to simulate.
+2025-07-09 07:38:15,797 - root - DEBUG - Received INFO:::READY contents
+2025-07-09 07:38:15,798 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:38:15,798 - root - DEBUG - No samples left to simulate.
+2025-07-09 07:38:31,967 - root - DEBUG - Received INFO:::SIMULATION_COMPLETE contents
+2025-07-09 07:38:31,968 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:38:31,968 - root - DEBUG - No samples left to simulate.
+2025-07-09 07:38:31,987 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:38:31,988 - root - DEBUG - Received SIM_RESULTS:::-2.412656e-10:::1.5966189273333553e-07:::0.0 contents
+2025-07-09 07:38:31,989 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:38:31,989 - root - INFO  - Sample queue is done with simulation.
+2025-07-09 07:38:31,990 - root - INFO  - Nominal value set to -2.412656e-10
+2025-07-09 07:38:31,990 - root - INFO  - Starting createSensitivitySampleQueue
+2025-07-09 07:38:31,990 - root - INFO  - Starting getSampleDictForSensitivity
+```
+
+### 2. Requested sample assignments `[646-698]`
+
+```text
+Requested sample assignments set to:
+('x1.xout0_1', 'parl1', 3.0)
+('x1.xout0_2', 'parl1', 3.0)
+('x1.xout0_3', 'parl1', 3.0)
+('x1.xout0_4', 'parl1', 3.0)
+('x1.xsfa0_1', 'parl1', 3.0)
+('x1.xsea0', 'parl1', 3.0)
+('x1.xsfa0_2', 'parl1', 3.0)
+('x1.xmsa3', 'parl1', 3.0)
+('x1.xsla2', 'parl1', 3.0)
+('x1.xmsa2', 'parl1', 3.0)
+('x1.xsla0', 'parl1', 3.0)
+('x1.xmsa0', 'parl1', 3.0)
+('x1.xmsa4', 'parl1', 3.0)
+('x1.xsla1', 'parl1', 3.0)
+('x1.xsla3', 'parl1', 3.0)
+('x1.xmsa1', 'parl1', 3.0)
+('x1.xssa0', 'parl1', 3.0)
+('x1.xmla0', 'parl1', 3.0)
+('x1.xssa2', 'parl1', 3.0)
+('x1.xmla1', 'parl1', 3.0)
+('x1.xckb0', 'parl1', 3.0)
+('x1.xssa1', 'parl1', 3.0)
+('x1.xcka0_1', 'parl1', 3.0)
+('x1.xmfa1', 'parl1', 3.0)
+('x1.xcka0_2', 'parl1', 3.0)
+('x1.xmfa0', 'parl1', 3.0)
+('x1.xmfa2', 'parl1', 3.0)
+('x1.xout1_1', 'parl1', 3.0)
+('x1.xout1_2', 'parl1', 3.0)
+('x1.xout1_3', 'parl1', 3.0)
+('x1.xout1_4', 'parl1', 3.0)
+('x1.xsfa1_1', 'parl1', 3.0)
+('x1.xsea1', 'parl1', 3.0)
+('x1.xsfa1_2', 'parl1', 3.0)
+('x1.xsla6', 'parl1', 3.0)
+('x1.xmsa7', 'parl1', 3.0)
+('x1.xsla5', 'parl1', 3.0)
+('x1.xmsa5', 'parl1', 3.0)
+('x1.xmsa6', 'parl1', 3.0)
+('x1.xsla7', 'parl1', 3.0)
+('x1.xmsa8', 'parl1', 3.0)
+('x1.xsla4', 'parl1', 3.0)
+('x1.xmsa9', 'parl1', 3.0)
+('x1.xssa4', 'parl1', 3.0)
+('x1.xmla3', 'parl1', 3.0)
+('x1.xssa5', 'parl1', 3.0)
+('x1.xmla2', 'parl1', 3.0)
+('x1.xckb1', 'parl1', 3.0)
+('x1.xssa3', 'parl1', 3.0)
+('x1.xcka1', 'parl1', 3.0)
+('x1.xmfa5', 'parl1', 3.0)
+('x1.xmfa3', 'parl1', 3.0)
+('x1.xmfa4', 'parl1', 3.0)
+```
+
+### 3. Sensitivity sample simulation start `[699-724]`
+
+```text
+2025-07-09 07:38:32,009 - root - INFO  - Starting simulateSampleQueue
+2025-07-09 07:38:32,009 - root - INFO  - Client 0 is available.
+2025-07-09 07:38:32,010 - root - INFO  - sample_id x1.xout0_1:parl1:3.0 is simulated for first time.
+2025-07-09 07:38:32,010 - root - DEBUG - Marked client as working.
+2025-07-09 07:38:32,010 - root - INFO  - Simulating sample x1.xout0_1:parl1:3.0 on client 0
+2025-07-09 07:38:32,011 - root - INFO  - Client 1 is available.
+2025-07-09 07:38:32,011 - root - INFO  - sample_id x1.xout0_2:parl1:3.0 is simulated for first time.
+2025-07-09 07:38:32,011 - root - DEBUG - Marked client as working.
+2025-07-09 07:38:32,011 - root - INFO  - Simulating sample x1.xout0_2:parl1:3.0 on client 1
+2025-07-09 07:38:32,012 - root - INFO  - Client 2 is available.
+2025-07-09 07:38:32,012 - root - INFO  - sample_id x1.xout0_3:parl1:3.0 is simulated for first time.
+2025-07-09 07:38:32,012 - root - DEBUG - Marked client as working.
+2025-07-09 07:38:32,012 - root - INFO  - Simulating sample x1.xout0_3:parl1:3.0 on client 2
+2025-07-09 07:38:32,013 - root - INFO  - Client 3 is available.
+2025-07-09 07:38:32,013 - root - INFO  - sample_id x1.xout0_4:parl1:3.0 is simulated for first time.
+2025-07-09 07:38:32,013 - root - DEBUG - Marked client as working.
+2025-07-09 07:38:32,013 - root - INFO  - Simulating sample x1.xout0_4:parl1:3.0 on client 3
+2025-07-09 07:38:32,025 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:38:32,025 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:38:32,025 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:38:32,025 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:38:32,025 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:38:32,509 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:38:32,509 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:38:39,417 - root - DEBUG - Received INFO:::READY contents
+```
+
+### 4. Sensitivity sample simulation loop `[725-772]`
+
+```text
+2025-07-09 07:38:39,417 - root - INFO  - Client 4 is available.
+2025-07-09 07:38:39,417 - root - INFO  - sample_id x1.xsfa0_1:parl1:3.0 is simulated for first time.
+2025-07-09 07:38:39,417 - root - DEBUG - Marked client as working.
+2025-07-09 07:38:39,418 - root - INFO  - Simulating sample x1.xsfa0_1:parl1:3.0 on client 4
+2025-07-09 07:38:39,431 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:38:39,431 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:38:55,555 - root - DEBUG - Received INFO:::SIMULATION_COMPLETE contents
+2025-07-09 07:38:55,555 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:38:55,566 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:38:55,566 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:38:55,567 - root - DEBUG - Received SIM_RESULTS:::-2.411026e-10:::1.5966196949097114e-07:::0.0 contents
+2025-07-09 07:38:55,567 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:38:55,568 - root - INFO  - Client 2 is available.
+2025-07-09 07:38:55,568 - root - INFO  - sample_id x1.xsea0:parl1:3.0 is simulated for first time.
+2025-07-09 07:38:55,568 - root - DEBUG - Marked client as working.
+2025-07-09 07:38:55,579 - root - INFO  - Simulating sample x1.xsea0:parl1:3.0 on client 2
+2025-07-09 07:38:55,579 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:38:55,909 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:38:55,909 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:38:55,909 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:38:57,547 - root - DEBUG - Received INFO:::SIMULATION_COMPLETE contents
+2025-07-09 07:38:57,548 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:38:57,559 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:38:57,559 - root - DEBUG - Received SIM_RESULTS:::-2.411026e-10:::1.5966196949097114e-07:::0.0 contents
+2025-07-09 07:38:57,561 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:38:57,561 - root - INFO  - Client 3 is available.
+2025-07-09 07:38:57,561 - root - INFO  - sample_id x1.xsfa0_2:parl1:3.0 is simulated for first time.
+2025-07-09 07:38:57,561 - root - DEBUG - Marked client as working.
+2025-07-09 07:38:57,574 - root - INFO  - Simulating sample x1.xsfa0_2:parl1:3.0 on client 3
+2025-07-09 07:38:57,574 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:38:58,139 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:38:58,140 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:39:02,632 - root - DEBUG - Received INFO:::SIMULATION_COMPLETE contents
+2025-07-09 07:39:02,641 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:39:02,653 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:39:02,655 - root - DEBUG - Received SIM_RESULTS:::-2.411026e-10:::1.5966196949097114e-07:::0.0 contents
+2025-07-09 07:39:02,655 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:39:02,655 - root - INFO  - Client 4 is available.
+2025-07-09 07:39:02,655 - root - INFO  - sample_id x1.xmsa3:parl1:3.0 is simulated for first time.
+2025-07-09 07:39:02,655 - root - DEBUG - Marked client as working.
+2025-07-09 07:39:02,655 - root - INFO  - Simulating sample x1.xmsa3:parl1:3.0 on client 4
+2025-07-09 07:39:02,667 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:39:02,668 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:39:03,013 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:39:03,394 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:39:03,394 - root - DEBUG - Received INFO:::SIMULATION_COMPLETE contents
+2025-07-09 07:39:03,405 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:39:03,405 - root - DEBUG - Received ACK:::REQUEST_RECEIVED
+```
+
+### 5. Later sensitivity samples `[1299-1348]`
+
+```text
+2025-07-09 07:41:51,127 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:41:51,127 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:41:51,313 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:41:51,313 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:41:55,530 - root - DEBUG - Received INFO:::SIMULATION_COMPLETE contents
+2025-07-09 07:41:55,531 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:41:55,541 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:41:55,542 - root - DEBUG - Received SIM_RESULTS:::-6.186979e-10:::1.592845264238926e-07:::0.0 contents
+2025-07-09 07:41:55,543 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:41:55,544 - root - INFO  - Client 1 is available.
+2025-07-09 07:41:55,544 - root - INFO  - sample_id x1.xcka1:parl1:3.0 is simulated for first time.
+2025-07-09 07:41:55,544 - root - DEBUG - Marked client as working.
+2025-07-09 07:41:55,544 - root - INFO  - Simulating sample x1.xcka1:parl1:3.0 on client 1
+2025-07-09 07:41:55,556 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:41:56,041 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:41:56,041 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:41:58,304 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:41:58,305 - root - DEBUG - Received INFO:::SIMULATION_COMPLETE contents
+2025-07-09 07:41:58,316 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:41:58,316 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:41:58,318 - root - DEBUG - Received SIM_RESULTS:::-2.406725e-10:::1.59662573516743e-07:::0.0 contents
+2025-07-09 07:41:58,318 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:41:58,318 - root - INFO  - Client 4 is available.
+2025-07-09 07:41:58,318 - root - INFO  - sample_id x1.xmfa5:parl1:3.0 is simulated for first time.
+2025-07-09 07:41:58,318 - root - DEBUG - Marked client as working.
+2025-07-09 07:41:58,319 - root - INFO  - Simulating sample x1.xmfa5:parl1:3.0 on client 4
+2025-07-09 07:41:58,331 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:41:58,695 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:41:58,695 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:42:05,668 - root - DEBUG - Received INFO:::SIMULATION_COMPLETE contents
+2025-07-09 07:42:05,669 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:42:05,680 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:42:05,680 - root - DEBUG - Received SIM_RESULTS:::-2.410616e-10:::1.5966198998810804e-07:::0.0 contents
+2025-07-09 07:42:05,682 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:42:05,682 - root - INFO  - Client 3 is available.
+2025-07-09 07:42:05,682 - root - INFO  - sample_id x1.xmfa3:parl1:3.0 is simulated for first time.
+2025-07-09 07:42:05,683 - root - DEBUG - Marked client as working.
+2025-07-09 07:42:05,694 - root - INFO  - Simulating sample x1.xmfa3:parl1:3.0 on client 3
+2025-07-09 07:42:05,695 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:42:06,120 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:42:06,121 - root - DEBUG - Received INFO:::SIMULATION_COMPLETE contents
+2025-07-09 07:42:06,132 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:42:06,132 - root - DEBUG - Received SIM_RESULTS:::-1.076075e-10:::1.597956180455146e-07:::0.0 contents
+2025-07-09 07:42:06,135 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:42:06,135 - root - INFO  - Client 2 is available.
+2025-07-09 07:42:06,135 - root - INFO  - sample_id x1.xmfa4:parl1:3.0 is simulated for first time.
+2025-07-09 07:42:06,135 - root - DEBUG - Marked client as working.
+2025-07-09 07:42:06,135 - root - INFO  - Simulating sample x1.xmfa4:parl1:3.0 on client 2
+```
+
+### 6. Sensitivity queue completion `[1395-1444]`
+
+```text
+2025-07-09 07:42:22,849 - root - DEBUG - No samples left to simulate.
+2025-07-09 07:42:22,861 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:42:22,861 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:42:22,861 - root - DEBUG - No samples left to simulate.
+2025-07-09 07:42:24,413 - root - DEBUG - Received INFO:::SIMULATION_COMPLETE contents
+2025-07-09 07:42:24,413 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:42:24,413 - root - DEBUG - No samples left to simulate.
+2025-07-09 07:42:24,424 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:42:24,425 - root - DEBUG - Received SIM_RESULTS:::-2.436379e-10:::1.5965945912194062e-07:::0.0 contents
+2025-07-09 07:42:24,426 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:42:24,426 - root - INFO  - Sample queue is done with simulation.
+```
+
+### 7. Corrected parameter and simulated value rows `[1406-1444]`
+
+```text
+Parameter and simulated value:
+('x1.xout0_3:parl1:3.0', -2.411026e-10, 1.5966196949097114e-07, 0.0)
+('x1.xout0_4:parl1:3.0', -2.411026e-10, 1.5966196949097114e-07, 0.0)
+('x1.xsfa0_1:parl1:3.0', -2.411026e-10, 1.5966196949097114e-07, 0.0)
+('x1.xsfa0_2:parl1:3.0', -2.412177e-10, 1.596619530756223e-07, 0.0)
+('x1.xout0_2:parl1:3.0', -2.414076e-10, 1.5966181697555978e-07, 0.0)
+('x1.xout0_1:parl1:3.0', -2.411026e-10, 1.5966196949097114e-07, 0.0)
+('x1.xsea0:parl1:3.0', -2.514076e-10, 1.59651665433609e-07, 0.0)
+('x1.xmsa3:parl1:3.0', -2.414076e-10, 1.5966181697555978e-07, 0.0)
+('x1.xsla2:parl1:3.0', -2.410258e-10, 1.5966219976343881e-07, 0.0)
+('x1.xmsa4:parl1:3.0', -2.436531e-10, 1.59659415809183e-07, 0.0)
+('x1.xmsa2:parl1:3.0', -2.401047e-10, 1.5966312085330946e-07, 0.0)
+('x1.xsla3:parl1:3.0', -2.411026e-10, 1.59662123005913e-07, 0.0)
+('x1.xmsa0:parl1:3.0', -2.394906e-10, 1.5966358139824478e-07, 0.0)
+('x1.xsla1:parl1:3.0', -2.414159e-10, 1.596618128325564e-07, 0.0)
+('x1.xsla0:parl1:3.0', -2.410258e-10, 1.5966204624846036e-07, 0.0)
+('x1.xssa0:parl1:3.0', -2.411026e-10, 1.5966212300583064e-07, 0.0)
+('x1.xssa2:parl1:3.0', -2.411505e-10, 1.5966194550411394e-07, 0.0)
+('x1.xssa1:parl1:3.0', -2.409394e-10, 1.5966215658772276e-07, 0.0)
+('x1.xmla0:parl1:3.0', -2.231931e-10, 1.5967993008858704e-07, 0.0)
+('x1.xckb0:parl1:3.0', -2.373569e-10, 1.5966580777627262e-07, 0.0)
+('x1.xmsa1:parl1:3.0', -2.263655e-10, 1.5967670654020098e-07, 0.0)
+('x1.xmfa1:parl1:3.0', -2.411151e-10, 1.5966196319175448e-07, 0.0)
+('x1.xmla1:parl1:3.0', -2.053349e-10, 1.5969773711280965e-07, 0.0)
+('x1.xcka0_1:parl1:3.0', -4.199555e-11, 1.5986107050740296e-07, 0.0)
+('x1.xcka0_2:parl1:3.0', -1.126247e-10, 1.5979048826604357e-07, 0.0)
+('x1.xout1_1:parl1:3.0', -2.414172e-10, 1.596618128325564e-07, 0.0)
+('x1.xmfa2:parl1:3.0', -3.024077e-10, 1.5960099653183154e-07, 0.0)
+('x1.xout1_3:parl1:3.0', -2.414159e-10, 1.596618128325564e-07, 0.0)
+('x1.xout1_2:parl1:3.0', -2.410616e-10, 1.5966198998810804e-07, 0.0)
+('x1.xmfa0:parl1:3.0', -3.888726e-10, 1.595143519524095e-07, 0.0)
+('x1.xout1_4:parl1:3.0', -2.414172e-10, 1.596618128325564e-07, 0.0)
+('x1.xsfa1_1:parl1:3.0', -2.410622e-10, 1.5966198998810804e-07, 0.0)
+('x1.xsea1:parl1:3.0', -2.41375e-10, 1.5966183326438876e-07, 0.0)
+('x1.xsfa1_2:parl1:3.0', -2.410616e-10, 1.5966198998810804e-07, 0.0)
+('x1.xmsa7:parl1:3.0', -2.41400e-10, 1.596618206919386e-07, 0.0)
+('x1.xmsa5:parl1:3.0', -2.410616e-10, 1.5966198998810804e-07, 0.0)
+('x1.xsla5:parl1:3.0', -2.410616e-10, 1.5966198998810804e-07, 0.0)
+('x1.xsla6:parl1:3.0', -2.410616e-10, 1.5966198998810804e-07, 0.0)
+('x1.xmsa6:parl1:3.0', -1.938039e-09, 1.5796519958038653e-07, 0.0)
+```
+
+## Part 3 — reserved for later batches
+
+> The following sections were parsed from screenshots `IMG_0308`–`IMG_0314` (note: `IMG_0307` covered lines 1395–1444 which are already transcribed in Part 1, sections 6–7). All entries are manually OCR'd from terminal photos and should be verified against the actual `fastmontecarlo.log` where exact digits matter. Each subsection header gives the terminal line-number range visible in that screenshot.
+
+### 8. Sensitivity parameter values continued `[1445–1458]`  *(IMG_0308 top)*
+
+```text
+2025-07-09 07:42:24,427 - root - INFO - Parameter and simulated value ('x1.xsla4:parl1:3.0', -2.414001e-10, 1.5966182069193863e-07, 0.0)
+2025-07-09 07:42:24,427 - root - INFO - Parameter and simulated value ('x1.xsla7:parl1:3.0', -2.410616e-10, 1.5966198998810804e-07, 0.0)
+2025-07-09 07:42:24,427 - root - INFO - Parameter and simulated value ('x1.xmsa8:parl1:3.0', -9.115461e-11, 1.5899167813139807e-07, 0.0)
+2025-07-09 07:42:24,427 - root - INFO - Parameter and simulated value ('x1.xmla3:parl1:3.0', -2.365023e-10, 1.5966685272673268e-07, 0.0)
+2025-07-09 07:42:24,427 - root - INFO - Parameter and simulated value ('x1.xssa4:parl1:3.0', -2.398626e-10, 1.5966315704537794e-07, 0.0)
+2025-07-09 07:42:24,427 - root - INFO - Parameter and simulated value ('x1.xmsa9:parl1:3.0', -6.186979e-10, 1.5928452642389266e-07, 0.0)
+2025-07-09 07:42:24,427 - root - INFO - Parameter and simulated value ('x1.xmla2:parl1:3.0', -2.406725e-10, 1.5966257351674366e-07, 0.0)
+2025-07-09 07:42:24,427 - root - INFO - Parameter and simulated value ('x1.xssa3:parl1:3.0', -2.410616e-10, 1.5966198998810804e-07, 0.0)
+2025-07-09 07:42:24,427 - root - INFO - Parameter and simulated value ('x1.xckb1:parl1:3.0', -1.076075e-10, 1.5979561804551460e-07, 0.0)
+2025-07-09 07:42:24,427 - root - INFO - Parameter and simulated value ('x1.xssa5:parl1:3.0', -2.421881e-10, 1.5966101249091608e-07, 0.0)
+2025-07-09 07:42:24,427 - root - INFO - Parameter and simulated value ('x1.xmfa5:parl1:3.0', -2.3717e-10, 1.5966588017900774e-07, 0.0)
+2025-07-09 07:42:24,428 - root - INFO - Parameter and simulated value ('x1.xcka1:parl1:3.0', -2.395005e-10, 1.5966374057401290e-07, 0.0)
+2025-07-09 07:42:24,428 - root - INFO - Parameter and simulated value ('x1.xmfa4:parl1:3.0', -2.410616e-10, 1.5966198998810804e-07, 0.0)
+2025-07-09 07:42:24,428 - root - INFO - Parameter and simulated value ('x1.xmfa3:parl1:3.0', -2.436379e-10, 1.5965945912194062e-07, 0.0)
+```
+
+### 9. Important / Non-important XTOR classification `[1459–1492]`  *(IMG_0308 mid-bottom)*
+
+```text
+2025-07-09 07:42:24,429 - root - INFO - Determining the important xtors to satisfy cumulative rss less than 0.7 of par rss and sensitivity larger than 1e-13
+2025-07-09 07:42:24,429 - root - INFO - First important xtor x1.xmsa6 sensit=5.65591e-10 cumul_rss=3.19893e-19 par_rss=3.96938e-19 rss_ratio=0.805903 thrsh=0.49
+2025-07-09 07:42:24,429 - root - INFO - Important xtor x1.xmsa8 sensit=2.23427e-10 cumul_rss=3.69813e-19 parl1_rss=3.96938e-19 rss_ratio=0.931665 thrsh=0.49
+2025-07-09 07:42:24,429 - root - INFO - Important xtor x1.xmsa9 sensit=1.25811e-10 cumul_rss=3.85641e-19 parl1_rss=3.96938e-19 rss_ratio=0.971541 thrsh=0.49
+2025-07-09 07:42:24,429 - root - INFO - Important xtor x1.xcka0_1 sensit=6.64233e-11 cumul_rss=3.90053e-19 parl1_rss=3.96938e-19 rss_ratio=0.982656 thrsh=0.49
+2025-07-09 07:42:24,429 - root - INFO - Important xtor x1.xmfa0 sensit=4.92023e-11 cumul_rss=3.92474e-19 parl1_rss=3.96938e-19 rss_ratio=0.988755 thrsh=0.49
+2025-07-09 07:42:24,429 - root - INFO - Important xtor x1.xckb1 sensit=4.45527e-11 cumul_rss=3.94459e-19 parl1_rss=3.96938e-19 rss_ratio=0.993756 thrsh=0.49
+2025-07-09 07:42:24,429 - root - INFO - Important xtor x1.xcka0_2 sensit=4.28803e-11 cumul_rss=3.96298e-19 parl1_rss=3.96938e-19 rss_ratio=0.998388 thrsh=0.49
+2025-07-09 07:42:24,429 - root - INFO - Important xtor x1.xmfa2 sensit=2.03807e-11 cumul_rss=3.96713e-19 parl1_rss=3.96938e-19 rss_ratio=0.999434 thrsh=0.49
+2025-07-09 07:42:24,429 - root - INFO - Non-important xtor x1.xmla1 sensit=1.19769e-11 cumul_rss=3.96857e-19 par_rss=3.96938e-19 rss_ratio=0.999796 thrsh=0.49
+2025-07-09 07:42:24,429 - root - INFO - Non-important xtor x1.xmla0 sensit=6.02417e-12 cumul_rss=3.96893e-19 par_rss=3.96938e-19 rss_ratio=0.999887 thrsh=0.49
+2025-07-09 07:42:24,429 - root - INFO - Non-important xtor x1.xmsa1 sensit=4.9667e-12 cumul_rss=3.96918e-19 par_rss=3.96938e-19 rss_ratio=0.999949 thrsh=0.49
+2025-07-09 07:42:24,429 - root - INFO - Non-important xtor x1.xsea0 sensit=3.38067e-12 cumul_rss=3.96929e-19 par_rss=3.96938e-19 rss_ratio=0.999978 thrsh=0.49
+2025-07-09 07:42:24,429 - root - INFO - Non-important xtor x1.xmla3 sensit=1.58777e-12 cumul_rss=3.96932e-19 par_rss=3.96938e-19 rss_ratio=0.999985 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xmfa5 sensit=1.3652e-12 cumul_rss=3.96933e-19 par_rss=3.96938e-19 rss_ratio=0.999989 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xckb0 sensit=1.3029e-12 cumul_rss=3.96935e-19 par_rss=3.96938e-19 rss_ratio=0.999994 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xmsa4 sensit=7.95833e-13 cumul_rss=3.96936e-19 par_rss=3.96938e-19 rss_ratio=0.999995 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xmfa3 sensit=7.90767e-13 cumul_rss=3.96936e-19 par_rss=3.96938e-19 rss_ratio=0.999997 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xmsa0 sensit=5.91667e-13 cumul_rss=3.96937e-19 par_rss=3.96938e-19 rss_ratio=0.999998 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xcka1 sensit=5.88367e-13 cumul_rss=3.96937e-19 par_rss=3.96938e-19 rss_ratio=0.999998 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xssa4 sensit=4.67667e-13 cumul_rss=3.96937e-19 par_rss=3.96938e-19 rss_ratio=0.999999 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xmsa2 sensit=3.86967e-13 cumul_rss=3.96937e-19 par_rss=3.96938e-19 rss_ratio=0.999999 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xssa5 sensit=3.075e-13 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xmla2 sensit=1.977e-13 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xssa1 sensit=1.08733e-13 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xsla2 sensit=7.99333e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xsla0 sensit=7.99333e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xout1_2 sensit=6.8e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xsfa1_2 sensit=6.8e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xsla6 sensit=6.8e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xsla5 sensit=6.8e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xmsa5 sensit=6.8e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xsla7 sensit=6.8e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xssa3 sensit=6.8e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+```
+
+### 10. Non-important XTOR list continued, 8 important XTORs identified, next sensitivity batch starts `[1493–1540]`  *(IMG_0309)*
+
+```text
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xmfa4 sensit=6.8e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xsfa1_1 sensit=6.78e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xout0_1 sensit=5.43333e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xout0_3 sensit=5.43333e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xout0_4 sensit=5.43333e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xsfa0_1 sensit=5.43333e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xsla3 sensit=5.43333e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xssa0 sensit=5.43333e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xout1_1 sensit=5.05333e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xout1_4 sensit=5.05333e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,430 - root - INFO - Non-important xtor x1.xmfa1 sensit=5.01667e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,431 - root - INFO - Non-important xtor x1.xsla1 sensit=5.01e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,431 - root - INFO - Non-important xtor x1.xout1_3 sensit=5.01e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,431 - root - INFO - Non-important xtor x1.xout0_2 sensit=4.73333e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,431 - root - INFO - Non-important xtor x1.xmsa3 sensit=4.73333e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,431 - root - INFO - Non-important xtor x1.xmsa7 sensit=4.48333e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,431 - root - INFO - Non-important xtor x1.xsla4 sensit=4.48333e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,431 - root - INFO - Non-important xtor x1.xssa2 sensit=3.83667e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,431 - root - INFO - Non-important xtor x1.xsea1 sensit=3.64667e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,431 - root - INFO - Non-important xtor x1.xsfa0_2 sensit=1.59667e-14 cumul_rss=3.96938e-19 par_rss=3.96938e-19 rss_ratio=1 thrsh=0.49
+2025-07-09 07:42:24,431 - root - DEBUG - There are 8 important XTORs identified.
+2025-07-09 07:42:24,431 - root - DEBUG - Algorithm computes we need to keep at least 8 clients.
+2025-07-09 07:42:24,431 - root - INFO - Burst mode is set to 2.
+2025-07-09 07:42:24,431 - root - INFO - Trying to terminate clients.
+2025-07-09 07:42:24,431 - root - INFO - nclients <= nclients_to_keep; all clients are necessary.
+2025-07-09 07:42:24,431 - root - INFO - Finished handling burst mode.
+2025-07-09 07:42:24,431 - root - INFO - Starting createSensitivitySampleQueue
+2025-07-09 07:42:24,431 - root - INFO - Starting getSampleDictForSensitivity
+2025-07-09 07:42:24,431 - root - DEBUG - Requested sample assignments set to [('x1.xcka0_1', 'parl1', -3.0)]
+2025-07-09 07:42:24,431 - root - DEBUG - Requested sample assignments set to [('x1.xcka0_2', 'parl1', -3.0)]
+2025-07-09 07:42:24,432 - root - DEBUG - Requested sample assignments set to [('x1.xmfa0',   'parl1', -3.0)]
+2025-07-09 07:42:24,432 - root - DEBUG - Requested sample assignments set to [('x1.xmfa2',   'parl1', -3.0)]
+2025-07-09 07:42:24,432 - root - DEBUG - Requested sample assignments set to [('x1.xmsa6',   'parl1', -3.0)]
+2025-07-09 07:42:24,433 - root - DEBUG - Requested sample assignments set to [('x1.xmsa8',   'parl1', -3.0)]
+2025-07-09 07:42:24,433 - root - DEBUG - Requested sample assignments set to [('x1.xmsa9',   'parl1', -3.0)]
+2025-07-09 07:42:24,433 - root - DEBUG - Requested sample assignments set to [('x1.xckb1',   'parl1', -3.0)]
+2025-07-09 07:42:24,434 - root - INFO  - Starting simulateSampleQueue
+2025-07-09 07:42:24,434 - root - INFO  - Client 0 is available.
+2025-07-09 07:42:24,434 - root - INFO  - sample_id x1.xcka0_1:parl1:-3.0 is simulated for first time.
+2025-07-09 07:42:24,434 - root - DEBUG - Marked client as working.
+2025-07-09 07:42:24,434 - root - INFO  - Simulating sample x1.xcka0_1:parl1:-3.0 on client 0
+2025-07-09 07:42:24,435 - root - INFO  - Client 1 is available.
+2025-07-09 07:42:24,435 - root - INFO  - sample_id x1.xcka0_2:parl1:-3.0 is simulated for first time.
+2025-07-09 07:42:24,435 - root - DEBUG - Marked client as working.
+2025-07-09 07:42:24,435 - root - INFO  - Simulating sample x1.xcka0_2:parl1:-3.0 on client 1
+2025-07-09 07:42:24,436 - root - INFO  - Client 2 is available.
+2025-07-09 07:42:24,436 - root - INFO  - sample_id x1.xmfa0:parl1:-3.0 is simulated for first time.
+2025-07-09 07:42:24,436 - root - DEBUG - Marked client as working.
+```
+
+### 11. Mid-run sample queue completion and parameter values batch (parl1:1.0 / plo_dtfin:±3.0 / parl2:3.0) `[2595–2644]`  *(IMG_0310)*
+
+```text
+2025-07-09 07:47:11,413 - root - DEBUG - No samples left to simulate.
+2025-07-09 07:47:11,428 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:47:11,428 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:47:11,428 - root - DEBUG - No samples left to simulate.
+2025-07-09 07:47:16,895 - root - DEBUG - Received INFO:::SIMULATION_COMPLETE contents
+2025-07-09 07:47:16,896 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:47:16,896 - root - DEBUG - No samples left to simulate.
+2025-07-09 07:47:16,907 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:47:16,908 - root - DEBUG - Received SIM_RESULTS:::-2.417739e-10:::1.596613231647112e-07:::0.0 contents
+2025-07-09 07:47:16,909 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:47:16,910 - root - DEBUG - No samples left to simulate.
+2025-07-09 07:47:16,924 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:47:16,925 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:47:16,925 - root - DEBUG - No samples left to simulate.
+2025-07-09 07:47:17,648 - root - DEBUG - Received INFO:::SIMULATION_COMPLETE contents
+2025-07-09 07:47:17,648 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:47:17,649 - root - DEBUG - No samples left to simulate.
+2025-07-09 07:47:17,665 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 07:47:17,666 - root - DEBUG - Received SIM_RESULTS:::-2.411109e-10:::1.5966211049932367e-07:::0.0 contents
+2025-07-09 07:47:17,669 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 07:47:17,669 - root - INFO  - Sample queue is done with simulation.
+2025-07-09 07:47:17,669 - root - INFO  - Parameter and simulated value ('x1.xmfa0:parl1:1.0',     -2.707701e-10, 1.596323269438356e-07,  0.0)
+2025-07-09 07:47:17,670 - root - INFO  - Parameter and simulated value ('x1.xmsa6:parl1:1.0',     -4.984432e-10, 1.5940481016789383e-07, 0.0)
+2025-07-09 07:47:17,670 - root - INFO  - Parameter and simulated value ('x1.xcka0_1:parl1:-1.0',  -3.25499e-10,  1.5957764835589878e-07, 0.0)
+2025-07-09 07:47:17,670 - root - INFO  - Parameter and simulated value ('x1.xmfa2:parl1:1.0',     -2.468237e-10, 1.5965614526812627e-07, 0.0)
+2025-07-09 07:47:17,670 - root - INFO  - Parameter and simulated value ('x1.xcka0_2:parl1:-1.0',  -3.100426e-10, 1.5959328560358522e-07, 0.0)
+2025-07-09 07:47:17,670 - root - INFO  - Parameter and simulated value ('x1.xmsa8:parl1:1.0',     -3.254487e-10, 1.5957775191383047e-07, 0.0)
+2025-07-09 07:47:17,670 - root - INFO  - Parameter and simulated value ('x1.xmsa9:parl1:1.0',     -2.927244e-10, 1.5961047622072472e-07, 0.0)
+2025-07-09 07:47:17,670 - root - INFO  - Parameter and simulated value ('x1.xckb1:parl1:1.0',     -2.056876e-10, 1.5969738858940262e-07, 0.0)
+2025-07-09 07:47:17,670 - root - INFO  - Parameter and simulated value ('x1.xcka0_1:plo_dtfin:3.0',  -2.793881e-10, 1.5962393875136803e-07, 0.0)
+2025-07-09 07:47:17,670 - root - INFO  - Parameter and simulated value ('x1.xcka0_2:plo_dtfin:3.0',  -2.715065e-10, 1.596318091541771e-07,  0.0)
+2025-07-09 07:47:17,670 - root - INFO  - Parameter and simulated value ('x1.xmfa0:plo_dtfin:3.0',    -2.280391e-10, 1.5967503128128670e-07, 0.0)
+2025-07-09 07:47:17,670 - root - INFO  - Parameter and simulated value ('x1.xmfa2:plo_dtfin:3.0',    -2.399274e-10, 1.596631267406167e-07,  0.0)
+2025-07-09 07:47:17,670 - root - INFO  - Parameter and simulated value ('x1.xmsa8:plo_dtfin:3.0',    -2.214388e-10, 1.5968170943825643e-07, 0.0)
+2025-07-09 07:47:17,670 - root - INFO  - Parameter and simulated value ('x1.xmsa6:plo_dtfin:3.0',    -1.685222e-10, 1.5973455398471213e-07, 0.0)
+2025-07-09 07:47:17,671 - root - INFO  - Parameter and simulated value ('x1.xcka0_1:plo_dtfin:-3.0', -1.990095e-10, 1.5970421192369772e-07, 0.0)
+2025-07-09 07:47:17,671 - root - INFO  - Parameter and simulated value ('x1.xmsa9:plo_dtfin:3.0',    -2.277184e-10, 1.59675466813263e-07,   0.0)
+2025-07-09 07:47:17,671 - root - INFO  - Parameter and simulated value ('x1.xckb1:plo_dtfin:3.0',    -2.579316e-10, 1.5964516821273662e-07, 0.0)
+2025-07-09 07:47:17,671 - root - INFO  - Parameter and simulated value ('x1.xcka0_2:plo_dtfin:-3.0', -2.097526e-10, 1.5969332362429066e-07, 0.0)
+2025-07-09 07:47:17,671 - root - INFO  - Parameter and simulated value ('x1.xmfa2:plo_dtfin:-3.0',   -2.431756e-10, 1.5965997691159991e-07, 0.0)
+2025-07-09 07:47:17,671 - root - INFO  - Parameter and simulated value ('x1.xmsa8:plo_dtfin:-3.0',   -2.744348e-10, 1.5962859885829447e-07, 0.0)
+2025-07-09 07:47:17,671 - root - INFO  - Parameter and simulated value ('x1.xmfa0:plo_dtfin:-3.0',   -2.564791e-10, 1.5964661793840998e-07, 0.0)
+2025-07-09 07:47:17,671 - root - INFO  - Parameter and simulated value ('x1.xmsa6:plo_dtfin:-3.0',   -3.517524e-10, 1.5955144819917904e-07, 0.0)
+2025-07-09 07:47:17,672 - root - INFO  - Parameter and simulated value ('x1.xmsa9:plo_dtfin:-3.0',   -2.641536e-10, 1.5963895465146436e-07, 0.0)
+2025-07-09 07:47:17,672 - root - INFO  - Parameter and simulated value ('x1.xckb1:plo_dtfin:-3.0',   -2.204957e-10, 1.5968272567953443e-07, 0.0)
+2025-07-09 07:47:17,672 - root - INFO  - Parameter and simulated value ('x1.xcka0_1:parl2:3.0',      -2.72983e-10,  1.5963015222726993e-07, 0.0)
+2025-07-09 07:47:17,672 - root - INFO  - Parameter and simulated value ('x1.xcka0_2:parl2:3.0',      -2.649925e-10, 1.5963812618801079e-07, 0.0)
+2025-07-09 07:47:17,672 - root - INFO  - Parameter and simulated value ('x1.xmfa2:parl2:3.0',        -2.393688e-10, 1.5966385262722878e-07, 0.0)
+2025-07-09 07:47:17,672 - root - INFO  - Parameter and simulated value ('x1.xmfa0:parl2:3.0',        -2.331567e-10, 1.596702404295476e-07,  0.0)
+2025-07-09 07:47:17,672 - root - INFO  - Parameter and simulated value ('x1.xmsa6:parl2:3.0',        -1.633073e-10, 1.5973978036842754e-07, 0.0)
+```
+
+### 12. Parameter values continued (parl2:±3.0 / plo_dhfin:±3.0) and next-batch sample queue setup `[2645–2692]`  *(IMG_0311)*
+
+```text
+2025-07-09 07:47:17,672 - root - INFO  - Parameter and simulated value ('x1.xmsa8:parl2:3.0',       -2.181729e-10, 1.5968490333941585e-07, 0.0)
+2025-07-09 07:47:17,672 - root - INFO  - Parameter and simulated value ('x1.xckb1:parl2:3.0',       -2.531652e-10, 1.5965003535015606e-07, 0.0)
+2025-07-09 07:47:17,672 - root - INFO  - Parameter and simulated value ('x1.xcka0_2:parl2:-3.0',    -2.129465e-10, 1.5969027490045668e-07, 0.0)
+2025-07-09 07:47:17,672 - root - INFO  - Parameter and simulated value ('x1.xmsa9:parl2:3.0',       -2.283353e-10, 1.596748861039613e-07,  0.0)
+2025-07-09 07:47:17,672 - root - INFO  - Parameter and simulated value ('x1.xcka0_1:parl2:-3.0',    -2.013323e-10, 1.5970188908649088e-07, 0.0)
+2025-07-09 07:47:17,672 - root - INFO  - Parameter and simulated value ('x1.xmfa0:parl2:-3.0',      -2.531668e-10, 1.5965003535015606e-07, 0.0)
+2025-07-09 07:47:17,673 - root - INFO  - Parameter and simulated value ('x1.xmsa6:parl2:-3.0',      -3.865478e-10, 1.5951654917619666e-07, 0.0)
+2025-07-09 07:47:17,673 - root - INFO  - Parameter and simulated value ('x1.xmfa2:parl2:-3.0',      -2.446735e-10, 1.5965842354262364e-07, 0.0)
+2025-07-09 07:47:17,673 - root - INFO  - Parameter and simulated value ('x1.xckb1:parl2:-3.0',      -2.222321e-10, 1.5968098355162928e-07, 0.0)
+2025-07-09 07:47:17,673 - root - INFO  - Parameter and simulated value ('x1.xmsa8:parl2:-3.0',      -2.896671e-10, 1.5961347940026646e-07, 0.0)
+2025-07-09 07:47:17,673 - root - INFO  - Parameter and simulated value ('x1.xmsa9:parl2:-3.0',      -2.671874e-10, 1.5963595147144503e-07, 0.0)
+2025-07-09 07:47:17,673 - root - INFO  - Parameter and simulated value ('x1.xcka0_1:plo_dhfin:3.0', -2.564791e-10, 1.5964661793840998e-07, 0.0)
+2025-07-09 07:47:17,673 - root - INFO  - Parameter and simulated value ('x1.xmfa0:plo_dhfin:3.0',   -2.399959e-10, 1.5966312674060167e-07, 0.0)
+2025-07-09 07:47:17,673 - root - INFO  - Parameter and simulated value ('x1.xcka0_2:plo_dhfin:3.0', -2.52751e-10,  1.5965044958188285e-07, 0.0)
+2025-07-09 07:47:17,673 - root - INFO  - Parameter and simulated value ('x1.xmfa2:plo_dhfin:3.0',   -2.408205e-10, 1.5966240085397453e-07, 0.0)
+2025-07-09 07:47:17,673 - root - INFO  - Parameter and simulated value ('x1.xmsa6:plo_dhfin:3.0',   -2.393688e-10, 1.5966370744990337e-07, 0.0)
+2025-07-09 07:47:17,673 - root - INFO  - Parameter and simulated value ('x1.xmsa8:plo_dhfin:3.0',   -2.408205e-10, 1.5966240085397453e-07, 0.0)
+2025-07-09 07:47:17,673 - root - INFO  - Parameter and simulated value ('x1.xmsa9:plo_dhfin:3.0',   -2.411109e-10, 1.5966211049932367e-07, 0.0)
+2025-07-09 07:47:17,673 - root - INFO  - Parameter and simulated value ('x1.xckb1:plo_dhfin:3.0',   -2.413596e-10, 1.5966173739643798e-07, 0.0)
+2025-07-09 07:47:17,673 - root - INFO  - Parameter and simulated value ('x1.xcka0_1:plo_dhfin:-3.0',-2.257221e-10, 1.5967735411849355e-07, 0.0)
+2025-07-09 07:47:17,674 - root - INFO  - Parameter and simulated value ('x1.xmfa0:plo_dhfin:-3.0',  -2.426023e-10, 1.596604947012576e-07,  0.0)
+2025-07-09 07:47:17,674 - root - INFO  - Parameter and simulated value ('x1.xcka0_2:plo_dhfin:-3.0',-2.301196e-10, 1.5967314397605615e-07, 0.0)
+2025-07-09 07:47:17,674 - root - INFO  - Parameter and simulated value ('x1.xmfa2:plo_dhfin:-3.0',  -2.41981e-10,  1.5966121960677948e-07, 0.0)
+2025-07-09 07:47:17,674 - root - INFO  - Parameter and simulated value ('x1.xmsa6:plo_dhfin:-3.0',  -2.430166e-10, 1.596600804695308e-07,  0.0)
+2025-07-09 07:47:17,674 - root - INFO  - Parameter and simulated value ('x1.xmsa9:plo_dhfin:-3.0',  -2.415667e-10, 1.5966163383850627e-07, 0.0)
+2025-07-09 07:47:17,674 - root - INFO  - Parameter and simulated value ('x1.xmsa8:plo_dhfin:-3.0',  -2.417739e-10, 1.5966132316471120e-07, 0.0)
+2025-07-09 07:47:17,674 - root - INFO  - Parameter and simulated value ('x1.xckb1:plo_dhfin:-3.0',  -2.411109e-10, 1.5966211049932367e-07, 0.0)
+2025-07-09 07:47:17,678 - root - DEBUG - Requested sample assignments set to [('x1.xcka0_1', 'parl1',  3.0), ('x1.xcka0_1', 'plo_dtfin', -3.0)]
+2025-07-09 07:47:17,679 - root - DEBUG - Requested sample assignments set to [('x1.xcka0_2', 'parl1',  3.0), ('x1.xcka0_2', 'plo_dtfin', -3.0)]
+2025-07-09 07:47:17,680 - root - DEBUG - Requested sample assignments set to [('x1.xmfa0',   'parl1', -3.0), ('x1.xmfa0',   'plo_dtfin',  3.0)]
+2025-07-09 07:47:17,681 - root - DEBUG - Requested sample assignments set to [('x1.xmfa2',   'parl1', -3.0), ('x1.xmfa2',   'plo_dtfin',  3.0)]
+2025-07-09 07:47:17,682 - root - DEBUG - Requested sample assignments set to [('x1.xmsa6',   'parl1', -3.0), ('x1.xmsa6',   'plo_dtfin',  3.0)]
+2025-07-09 07:47:17,683 - root - DEBUG - Requested sample assignments set to [('x1.xmsa8',   'parl1', -3.0), ('x1.xmsa8',   'plo_dtfin',  3.0)]
+2025-07-09 07:47:17,684 - root - DEBUG - Requested sample assignments set to [('x1.xmsa9',   'parl1', -3.0), ('x1.xmsa9',   'plo_dtfin',  3.0)]
+2025-07-09 07:47:17,685 - root - DEBUG - Requested sample assignments set to [('x1.xckb1',   'parl1',  3.0), ('x1.xckb1',   'plo_dtfin', -3.0)]
+2025-07-09 07:47:17,686 - root - INFO  - Client 0 is available.
+2025-07-09 07:47:17,687 - root - INFO  - sample_id x1.xcka0_1:parl1:3.0***x1.xcka0_1:plo_dtfin:-3.0 is simulated for first time.
+2025-07-09 07:47:17,687 - root - DEBUG - Marked client as working.
+2025-07-09 07:47:17,687 - root - INFO  - Simulating sample x1.xcka0_1:parl1:3.0***x1.xcka0_1:plo_dtfin:-3.0 on client 0
+2025-07-09 07:47:17,690 - root - INFO  - Client 1 is available.
+2025-07-09 07:47:17,690 - root - INFO  - sample_id x1.xcka0_2:parl1:3.0***x1.xcka0_2:plo_dtfin:-3.0 is simulated for first time.
+2025-07-09 07:47:17,690 - root - DEBUG - Marked client as working.
+2025-07-09 07:47:17,690 - root - INFO  - Simulating sample x1.xcka0_2:parl1:3.0***x1.xcka0_2:plo_dtfin:-3.0 on client 1
+2025-07-09 07:47:17,693 - root - INFO  - Client 2 is available.
+2025-07-09 07:47:17,693 - root - INFO  - sample_id x1.xmfa0:parl1:-3.0***x1.xmfa0:plo_dtfin:3.0 is simulated for first time.
+2025-07-09 07:47:17,693 - root - DEBUG - Marked client as working.
+2025-07-09 07:47:17,693 - root - INFO  - Simulating sample x1.xmfa0:parl1:-3.0***x1.xmfa0:plo_dtfin:3.0 on client 2
+2025-07-09 07:47:17,695 - root - INFO  - Client 3 is available.
+```
+
+### 13. Late-stage convergence simulation cycles `[10273–10322]`  *(IMG_0312)*
+
+```text
+2025-07-09 08:23:08,573 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 08:23:08,573 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 08:23:08,573 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 08:23:08,573 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 08:23:08,573 - root - DEBUG - No samples left to simulate.
+2025-07-09 08:23:24,941 - root - DEBUG - Received INFO:::SIMULATION_COMPLETE contents
+2025-07-09 08:23:24,941 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 08:23:24,941 - root - DEBUG - No samples left to simulate.
+2025-07-09 08:23:24,952 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 08:23:24,953 - root - DEBUG - Received SIM_RESULTS:::1.157041e-10:::1.6001879360894923e-07:::0.0 contents
+2025-07-09 08:23:24,955 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 08:23:24,956 - root - DEBUG - No samples left to simulate.
+2025-07-09 08:23:24,966 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 08:23:24,966 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 08:23:24,966 - root - DEBUG - No samples left to simulate.
+2025-07-09 08:23:25,266 - root - DEBUG - Received INFO:::SIMULATION_COMPLETE contents
+2025-07-09 08:23:25,266 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 08:23:25,267 - root - DEBUG - No samples left to simulate.
+2025-07-09 08:23:25,277 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 08:23:25,278 - root - DEBUG - Received SIM_RESULTS:::9.458778e-11:::1.599976773198154e-07:::0.0 contents
+2025-07-09 08:23:25,280 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 08:23:25,280 - root - DEBUG - No samples left to simulate.
+2025-07-09 08:23:25,291 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 08:23:25,291 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 08:23:25,291 - root - DEBUG - No samples left to simulate.
+2025-07-09 08:23:26,231 - root - DEBUG - Received INFO:::SIMULATION_COMPLETE contents
+2025-07-09 08:23:26,232 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 08:23:26,232 - root - DEBUG - No samples left to simulate.
+2025-07-09 08:23:26,243 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 08:23:26,243 - root - DEBUG - Received SIM_RESULTS:::1.685093e-10:::1.6007170296262177e-07:::0.0 contents
+2025-07-09 08:23:26,245 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 08:23:26,245 - root - DEBUG - No samples left to simulate.
+2025-07-09 08:23:26,256 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 08:23:26,256 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 08:23:26,256 - root - DEBUG - No samples left to simulate.
+2025-07-09 08:23:26,401 - root - DEBUG - Received INFO:::SIMULATION_COMPLETE contents
+2025-07-09 08:23:26,401 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 08:23:26,401 - root - DEBUG - No samples left to simulate.
+2025-07-09 08:23:26,412 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 08:23:26,412 - root - DEBUG - Received SIM_RESULTS:::1.22822e-10:::1.6002591145921905e-07:::0.0 contents
+2025-07-09 08:23:26,415 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 08:23:26,415 - root - DEBUG - No samples left to simulate.
+2025-07-09 08:23:26,425 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 08:23:26,425 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 08:23:26,425 - root - DEBUG - No samples left to simulate.
+2025-07-09 08:23:27,062 - root - DEBUG - Received INFO:::SIMULATION_COMPLETE contents
+2025-07-09 08:23:27,062 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 08:23:27,062 - root - DEBUG - No samples left to simulate.
+2025-07-09 08:23:27,073 - root - DEBUG - Received ACK:::REQUEST_RECEIVED contents
+2025-07-09 08:23:27,073 - root - DEBUG - Received SIM_RESULTS:::-1.443801e-11:::1.5988865557984893e-07:::0.0 contents
+```
+
+### 14. Final convergence check, CI analysis, STATISTICAL BEHAVIOR + CONVERGENCE INFORMATION + RUNTIME INFO begin `[10323–10368]`  *(IMG_0313)*
+
+```text
+2025-07-09 08:23:27,076 - root - DEBUG - 0 samples need to be resubmitted.
+2025-07-09 08:23:27,076 - root - INFO  - Sample queue is done with simulation.
+2025-07-09 08:23:27,076 - root - INFO  - Sim values is [(1143, 1.157041e-10, 1.6001879360894923e-07, 0.0), (19995, 1.22822e-10, 1.6002591145921905e-07, 0.0), (15321, 1.685093e-10, 1.6007170296262177e-07, 0.0), (7485, 9.458778e-11, 1.599976773198154e-07, 0.0), (23064, -1.443801e-11, 1.5988865557984893e-07, 0.0)]
+2025-07-09 08:23:30,004 - root - INFO  - Num simulation is 400
+2025-07-09 08:23:30,004 - root - INFO  - Current percentile is 3.301384226357078e-10
+2025-07-09 08:23:30,004 - root - INFO  - Checking overall convergence.
+2025-07-09 08:23:30,004 - root - INFO  - ConvergenceCheck: Tail samples stabilized
+2025-07-09 08:23:30,004 - root - INFO  - Clean tail set of measurements reached.
+2025-07-09 08:23:30,006 - root - INFO  - Convergence window size computed to be 134, minimum number of critical samples 34
+2025-07-09 08:23:30,006 - root - INFO  - Identifying the top 134 indices in 25000 samples for 99.865010 percentile
+2025-07-09 08:23:32,601 - root - INFO  - Confidence interval analysis: detected 0 predicted-value occurences in critical tail end out of 500 resamples
+2025-07-09 08:23:32,602 - root - INFO  - Confidence Interval analysis finished. Processing time = 2.597379684448242
+2025-07-09 08:23:32,606 - root - INFO  - In checkConfidenceIntervalConvergence Theoretical_CI_LB = 3.0642e-10, CI_LB = 3.07226e-10, CI_UB = 3.64392e-10, Theoretical_CI_UB = 3.58545e-10
+2025-07-09 08:23:32,606 - root - INFO  - In checkConfidenceIntervalConvergence ci_abs_val 5.71666e-11 vs ci_abs_lim 1e-11, OR  (ci_rel_val 1.10423 vs ci_rel_lim 1.15 AND ci_off_val 0.0990628 vs ci_off_lim 1.035), satisfied
+2025-07-09 08:23:32,606 - root - INFO  - Convergence achieved and confidence interval is valid: target type constraint, CI_LB=3.07225668840198e-10, Percentile=3.301384226357078e-10, CI_UB=3.643923e-10
+2025-07-09 08:23:32,606 - root - INFO  - Setting ci_good to 1 in when tail_convergence is True
+2025-07-09 08:23:32,606 - root - INFO  - continuing analysis for ci_good > 0
+2025-07-09 08:23:32,606 - root - INFO  - Before mt0 1
+2025-07-09 08:23:32,606 - root - INFO  - Appending the mt0 file.
+2025-07-09 08:23:34,005 - root - INFO  - MultiSigmaMode is set to 0
+2025-07-09 08:23:34,005 - root - INFO  - Skip extra quantile computation.
+2025-07-09 08:23:34,006 - root - INFO  - Convergence window size computed to be 134, minimum number of critical samples 34
+2025-07-09 08:23:34,006 - root - INFO  - Identifying the top 134 indices in 25000 samples for 99.865010 percentile
+2025-07-09 08:23:36,666 - root - INFO  - Confidence interval analysis: detected 0 predicted-value occurences in critical tail end out of 500 resamples
+2025-07-09 08:23:36,667 - root - INFO  - Confidence Interval analysis finished. Processing time = 2.66213059425354
+2025-07-09 08:23:37,217 - root - INFO  - FINAL DATA ::: Q99.86501019683699
+2025-07-09 08:23:37,217 - root - INFO  - STATISTICAL BEHAVIOR.
+2025-07-09 08:23:37,217 - root - INFO  -     Nominal                       = -2.41266e-10
+2025-07-09 08:23:37,217 - root - INFO  -     Percentile LB                 =  3.07226e-10
+2025-07-09 08:23:37,217 - root - INFO  -     Percentile                    =  3.30138e-10
+2025-07-09 08:23:37,217 - root - INFO  -     Percentile UB                 =  3.64392e-10
+2025-07-09 08:23:37,217 - root - INFO  -     RSS Estimate                  =  2.59929e-10
+2025-07-09 08:23:37,217 - root - INFO  -     Total Num Devices             = 54
+2025-07-09 08:23:37,217 - root - INFO  -     Num Devices Analyzed          = 53
+2025-07-09 08:23:37,217 - root - INFO  -     Num Important Devices         = 8
+2025-07-09 08:23:37,217 - root - INFO  -     Num Important Devices [%]     = 15
+2025-07-09 08:23:37,217 - root - INFO  - CONVERGENCE INFORMATION.
+2025-07-09 08:23:37,217 - root - INFO  -     Num sensitivity samples       = 142
+2025-07-09 08:23:37,218 - root - INFO  -     Num convergence samples       = 400
+2025-07-09 08:23:37,218 - root - INFO  -     Num convergence iterations    = 80
+2025-07-09 08:23:37,218 - root - INFO  -     Num total samples             = 542
+2025-07-09 08:23:37,218 - root - INFO  - RUNTIME INFORMATION.
+2025-07-09 08:23:37,218 - root - INFO  -     Sensitivity wall time [hrs]   = 0.183848
+2025-07-09 08:23:37,218 - root - INFO  -     Convergence wall time [hrs]   = 0.573776
+2025-07-09 08:23:37,218 - root - INFO  -     Retraining time [hrs]         = 0.0237913
+2025-07-09 08:23:37,218 - root - INFO  -     Ordering time [hrs]           = 0.0161515
+```
+
+### 15. RUNTIME / EFFORT / SYSTEM USAGE info and termination of all clients `[10369–10416]`  *(IMG_0314)*
+
+```text
+2025-07-09 08:23:37,218 - root - INFO  -     Total simulation time [hrs]            = 2.90266
+2025-07-09 08:23:37,218 - root - INFO  -     Total Set/Reset time [hrs]             = 0.0564609
+2025-07-09 08:23:37,218 - root - INFO  -     Total wall time [hrs]                  = 0.758002
+2025-07-09 08:23:37,218 - root - INFO  -     Average retraining time [hrs/retraining] = 0.000610034
+2025-07-09 08:23:37,218 - root - INFO  -     Average ordering time [hrs/ordering]   = 0.000403788
+2025-07-09 08:23:37,218 - root - INFO  - EFFORT INFORMATION.
+2025-07-09 08:23:37,218 - root - INFO  -     Sensitivity effort [CPU-hrs]  = 1.22525
+2025-07-09 08:23:37,218 - root - INFO  -     Convergence effort [CPU-hrs]  = 2.86888
+2025-07-09 08:23:37,218 - root - INFO  -     Total effort [CPU-hrs]        = 4.09413
+2025-07-09 08:23:37,218 - root - INFO  - SYSTEM USAGE INFORMATION.
+2025-07-09 08:23:37,218 - root - INFO  -     Initial num clients used      = 5
+2025-07-09 08:23:37,218 - root - INFO  -     Num clients used for convergence = 5
+2025-07-09 08:23:37,218 - root - INFO  -     Peak usage                    = 282.68
+2025-07-09 08:23:37,219 - root - INFO  - Writing summary file to ./summary.1.csv
+2025-07-09 08:23:37,220 - root - INFO  - Terminating all clients.
+2025-07-09 08:23:37,220 - root - INFO  - Killing client 0
+2025-07-09 08:23:37,220 - root - DEBUG - Sending terminate command 'break'
+2025-07-09 08:23:37,220 - root - DEBUG - Killed client 0.
+2025-07-09 08:23:37,220 - root - DEBUG - Terminating LSF job.
+2025-07-09 08:23:37,220 - root - DEBUG - Subprocess will wait 10 seconds before explicitly killing job with ID 59183785
+2025-07-09 08:23:37,248 - root - INFO  - Killing client 1
+2025-07-09 08:23:37,249 - root - DEBUG - Sending terminate command 'break'
+2025-07-09 08:23:37,249 - root - DEBUG - Killed client 1.
+2025-07-09 08:23:37,249 - root - DEBUG - Terminating LSF job.
+2025-07-09 08:23:37,249 - root - DEBUG - Subprocess will wait 10 seconds before explicitly killing job with ID 59183793
+2025-07-09 08:23:37,277 - root - INFO  - Killing client 2
+2025-07-09 08:23:37,277 - root - DEBUG - Sending terminate command 'break'
+2025-07-09 08:23:37,278 - root - DEBUG - Killed client 2.
+2025-07-09 08:23:37,278 - root - DEBUG - Terminating LSF job.
+2025-07-09 08:23:37,278 - root - DEBUG - Subprocess will wait 10 seconds before explicitly killing job with ID 59183801
+2025-07-09 08:23:37,314 - root - INFO  - Killing client 3
+2025-07-09 08:23:37,314 - root - DEBUG - Sending terminate command 'break'
+2025-07-09 08:23:37,314 - root - DEBUG - Killed client 3.
+2025-07-09 08:23:37,315 - root - DEBUG - Terminating LSF job.
+2025-07-09 08:23:37,315 - root - DEBUG - Subprocess will wait 10 seconds before explicitly killing job with ID 59183819
+2025-07-09 08:23:37,342 - root - INFO  - Killing client 4
+2025-07-09 08:23:37,342 - root - DEBUG - Sending terminate command 'break'
+2025-07-09 08:23:37,343 - root - DEBUG - Killed client 4.
+2025-07-09 08:23:37,343 - root - DEBUG - Terminating LSF job.
+2025-07-09 08:23:37,343 - root - DEBUG - Subprocess will wait 10 seconds before explicitly killing job with ID 59183844
+2025-07-09 08:23:37,370 - root - INFO  - Finished terminating all clients.
+2025-07-09 08:23:37,370 - root - INFO  - Explicitly resetting sample matrix to reduce filesize.
+2025-07-09 08:23:37,370 - root - INFO  - THANOS complete.
+2025-07-09 08:23:37,386 - root - INFO  - Cleaning up resources.
+2025-07-09 08:23:37,387 - root - DEBUG - Exit callback started.
+2025-07-09 08:23:37,387 - root - INFO  - Terminating client 0
+2025-07-09 08:23:37,387 - root - DEBUG - Sending terminate command 'break'
+2025-07-09 08:23:37,387 - root - DEBUG - Killed client 0.
+```
+
+---
+
+**Parsing notes**
+- Source images: IMG_0307 (lines 1395–1444, already transcribed in Part 1 §6–§7), IMG_0308 (1443–1492), IMG_0309 (1491–1540), IMG_0310 (2595–2644), IMG_0311 (2643–2692), IMG_0312 (10273–10322), IMG_0313 (10321–10368), IMG_0314 (10367–10416).
+- Some long mantissas (e.g. `1.5966198998810804`) were transcribed exactly as visible; verify against the actual `fastmontecarlo.log` if precise rounding matters.
+- Whitespace alignment between `parl1`/`plo_dtfin`/`parl2`/`plo_dhfin` columns has been preserved where it aids reading; the actual log uses single-space separation.
+- `xcka0_1:parl1:-1.0` at line 2618 sits visually between `+1.0` siblings on either side, which is correct (LHS sweep at the negative corner).
